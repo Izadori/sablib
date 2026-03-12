@@ -21,7 +21,6 @@ const std::vector<double> MovingAverage(const std::vector<double> & y, const uns
 	Eigen::VectorXd result = MovingAverage(yy, n);
 
 	std::vector<double> result_y(result.size());
-
 	Eigen::VectorXd::Map(result_y.data(), result_y.size()) = result;
 
 	return result_y;

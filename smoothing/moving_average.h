@@ -41,21 +41,11 @@ const typename Derived::PlainObject MovingAverage(const Eigen::MatrixBase<Derive
 	static_assert(Derived::IsVectorAtCompileTime, "Error: y is not vector.");
 
 	using PlainObject = typename Derived::PlainObject;
-	using Scalar = typename PlainObject::Scalar;
 
 	int points = 2 * n + 1;
 	PlainObject w = PlainObject::Ones(points) / points;
 
 	PlainObject result = Convolve(y, w, ConvolveMode::Same);
-
-	Scalar m_conv = std::ceil(points / 2.);
-
-	result(0) *= points / m_conv;
-
-	for(int i = 1; i < (int)m_conv; i++){
-		result(i) *= points / (i + m_conv);
-		result(points - i) *= points / (i + m_conv - 1);
-	}
 
 	return result;
 }
