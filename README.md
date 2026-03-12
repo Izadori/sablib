@@ -1,2 +1,7 @@
 # sablib
-C++ smoothing and background estimation library
+
+C++ smoothing and baseline estimation library
+
+## Requirements
+
+- Eigen 3.4.0 or later
