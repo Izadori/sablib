@@ -52,7 +52,6 @@ const std::vector<double> BaselineAirPLS(
 	Eigen::VectorXd::Map(result.data(), result.size()) = z;
 
 	return result;
-
 }
 
 }; // namespace sablib
