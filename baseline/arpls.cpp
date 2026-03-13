@@ -1,5 +1,5 @@
 /**
- * @file arpls.h
+ * @file arpls.cpp
  * @brief Baseline estimation using asymmetrically reweighted Penalized Least Squares(arPLS)(implementation)
  * @author Izadori
  */
@@ -48,10 +48,8 @@ const std::vector<double> BaselineArPLS(
 		tmp = ((d.array() + mean - 2 * sd) / sd).matrix();
 		tmp = (tmp.array() >= overflow).select(0, (1.0 / (1 + (2 * tmp).array().exp())).matrix());
 
-		// 重みwの更新
 		wt = (d.array() >= 0).select(tmp, 1);
 
-		// 収束判定
 		if ((w - wt).norm() / w.norm() < eps) {
 			break;
 		}
