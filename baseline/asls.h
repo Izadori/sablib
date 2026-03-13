@@ -15,6 +15,17 @@
 
 namespace sablib {
 
+/**
+ * @brief Performs baseline estimation using Asymmetric Least Squares Smoothing (AsLS).
+ *
+ * @param y The input data for baseline estimation.
+ * @param lambda Smoothing parameter (larger values lead to more smoothing).
+ * @param p Weight (asymmetry parameter, typically 0.001 to 0.1).
+ * @param s The order of the difference (usually s = 1, 2, or 3).
+ * @param loop Maximum number of iterations.
+ * @param eps Convergence threshold.
+ * @return The estimated baseline.
+ */
 const std::vector<double> BaselineAsLS(
 	std::vector<double> & y, const double lambda, const double p, const unsigned int s = 2,
 	const unsigned int loop = 10, const double eps = 1e-3
