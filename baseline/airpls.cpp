@@ -4,6 +4,8 @@
  * @author Izadori
  */
 
+#include <cmath>
+
 #include "airpls.h"
 
 namespace sablib {
