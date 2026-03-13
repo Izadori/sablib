@@ -19,7 +19,7 @@ namespace sablib {
  * @brief Performs baseline estimation using Asymmetric Least Squares Smoothing (AsLS).
  *
  * @param y The input data for baseline estimation.
- * @param lambda Smoothing parameter (larger values lead to more smoothing).
+ * @param lambda Smoothing parameter.
  * @param p Weight (asymmetry parameter, typically 0.001 to 0.1).
  * @param s The order of the difference (usually s = 1, 2, or 3).
  * @param loop Maximum number of iterations.
