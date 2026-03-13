@@ -1,11 +1,8 @@
-//
-// moving_average.h
-//
-// Copyright (c) 2026 Izadori
-//
-// This software is released under the MIT License.
-// http://opensource.org/licenses/mit-license.php
-//
+/**
+ * @file moving_average.h
+ * @brief Smoothing using simple moving average
+ * @author Izadori
+ */
 
 #ifndef __SABLIB_MOVING_AVERAGE_H__
 #define __SABLIB_MOVING_AVERAGE_H__

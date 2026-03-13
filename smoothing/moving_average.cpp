@@ -1,11 +1,8 @@
-//
-// moving_average.cpp
-//
-// Copyright (c) 2026 Izadori
-//
-// This software is released under the MIT License.
-// http://opensource.org/licenses/mit-license.php
-//
+/**
+ * @file moving_average.cpp
+ * @brief Smoothing using simple moving average(implementation)
+ * @author Izadori
+ */
 
 #include "moving_average.h"
 

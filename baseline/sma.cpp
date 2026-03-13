@@ -1,11 +1,8 @@
-//
-// sma.cpp
-//
-// Copyright (c) 2026 Izadori
-//
-// This software is released under the MIT License.
-// http://opensource.org/licenses/mit-license.php
-//
+/**
+ * @file sma.cpp
+ * @brief Baseline estimation using simple moving average(implementation)
+ * @author Izadori
+ */
 
 #include "sma.h"
 

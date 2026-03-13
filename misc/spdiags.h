@@ -1,11 +1,8 @@
-//
-// spdiags.h
-//
-// Copyright (c) 2026 Izadori
-//
-// This software is released under the MIT License.
-// http://opensource.org/licenses/mit-license.php
-//
+/**
+ * @file spdiags.h
+ * @brief Python's SciPy-like spdiags() function
+ * @author Izadori
+ */
 
 #ifndef __SABLIB_SPDIAGS_H__
 #define __SABLIB_SPDIAGS_H__
@@ -20,7 +17,7 @@ namespace sablib {
 
 /**
  * @brief Returns a sparse matrix with the specified elements on its diagonals.
- * 
+ *
  * @param data  Matrix containing the elements to be placed on the diagonals as columns.
  * @param diags Vector indicating the positions where the elements should be placed (0: diagonal, positive: upper triangular, negative: lower triangular).
  * @param m     Number of rows in the resulting sparse matrix (if -1, determined by data).
@@ -67,7 +64,7 @@ Spdiags(const Eigen::MatrixBase<Derived> & data, const Eigen::VectorXi & diags, 
 
 /**
  * @brief Returns a sparse matrix with the specified elements on its diagonals (std::vector<int> version).
- * 
+ *
  * @param data  Matrix containing the elements to be placed on the diagonals as columns.
  * @param diags Vector indicating the positions where the elements should be placed.
  * @param m     Number of rows in the resulting sparse matrix.
@@ -88,7 +85,7 @@ Spdiags(const Eigen::MatrixBase<Derived> & data, const std::vector<int> & diags,
 
 /**
  * @brief Returns a sparse matrix with the specified elements on its diagonals (std::initializer_list<int> version).
- * 
+ *
  * @param data  Matrix containing the elements to be placed on the diagonals as columns.
  * @param diags List indicating the positions where the elements should be placed.
  * @param m     Number of rows in the resulting sparse matrix.

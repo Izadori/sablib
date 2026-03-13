@@ -1,11 +1,8 @@
-//
-// sma.h
-//
-// Copyright (c) 2026 Izadori
-//
-// This software is released under the MIT License.
-// http://opensource.org/licenses/mit-license.php
-//
+/**
+ * @file sma.h
+ * @brief Baseline estimation using simple moving average
+ * @author Izadori
+ */
 
 #ifndef __SABLIB_SMA_H__
 #define __SABLIB_SMA_H__
