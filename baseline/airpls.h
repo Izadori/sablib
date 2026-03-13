@@ -5,6 +5,7 @@
  * @details
  * References:
  * @li Zhang, Z.-M.; Chena, Shan; Liang, Y.-Z. Baseline correction using adaptive iteratively reweighted penalized least squares Analyst 2010, 135(5), 1138-1146.
+ * @li <a href="https://github.com/zmzhang/airPLS">Zhang's GitHub</a>
  */
 
 #ifndef __SABLIB_AIRPLS_H__
