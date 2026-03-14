@@ -1,6 +1,6 @@
 /**
  * @file expand.h
- * @brief Expands the boundaries of the data
+ * @brief Expands and Trim the boundaries of the data
  * @author Izadori
  */
 
