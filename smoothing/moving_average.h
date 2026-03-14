@@ -1,6 +1,6 @@
 /**
  * @file moving_average.h
- * @brief Smoothing using simple moving average
+ * @brief Smoothing using simple/weighted moving average
  * @author Izadori
  */
 
@@ -10,9 +10,55 @@
 #include <cmath>
 #include <vector>
 
-#include "../misc/convolve.h"
+#include "../misc/expand.h"
 
 namespace sablib {
+
+/**
+ * @brief Calculates the weighted moving average of the input signal (std::vector<double> version).
+ *
+ * @param y The data to be averaged.
+ * @param w Weights.
+ * @return The data after applying the moving average.
+ */
+const std::vector<double> WeightedMovingAverage(const std::vector<double> & y, const std::vector<double> & w);
+
+/**
+ * @brief Calculates the weighted moving average of the input signal.
+ *
+ * @param y The data to be averaged.
+ * @param w Weights.
+ * @return The data after applying the moving average.
+ */
+template <typename Derived>
+const typename Derived::PlainObject WeightedMovingAverage(
+	const Eigen::MatrixBase<Derived> & y, const Eigen::MatrixBase<Derived> & w
+)
+{
+	// Although parameters are received as MatrixBase<Derived>, only vector classes are allowed.
+	// Others will be rejected at compile time.
+	static_assert(Derived::IsVectorAtCompileTime, "Error: y and w are not vector.");
+
+	using PlainObject = typename Derived::PlainObject;
+
+	int points = w.size();
+	int n = points / 2;
+	PlainObject yy = ExpandBoundaries(y, n);
+	PlainObject result = PlainObject::Zero(y.size());
+
+	if(y.cols() == 1) {
+		for(int i = 0; i < y.size(); i++) {
+			result(i) = (yy.block(i, 0, points, 1).array() * w.array()).matrix().sum();
+		}
+	}
+	else if(y.rows() == 1) {
+		for(int i = 0; i < y.size(); i++) {
+			result(i) = (yy.block(0, i, 1, points).array() * w.array()).matrix().sum();
+		}
+	}
+
+	return result;
+}
 
 /**
  * @brief Calculates the simple moving average of the input signal (std::vector<double> version).
@@ -33,18 +79,12 @@ const std::vector<double> MovingAverage(const std::vector<double> & y, const uns
 template <typename Derived>
 const typename Derived::PlainObject MovingAverage(const Eigen::MatrixBase<Derived> & y, const unsigned int n)
 {
-	// Although parameters are received as MatrixBase<Derived>, only vector classes are allowed.
-	// Others will be rejected at compile time.
-	static_assert(Derived::IsVectorAtCompileTime, "Error: y is not vector.");
-
 	using PlainObject = typename Derived::PlainObject;
 
 	int points = 2 * n + 1;
 	PlainObject w = PlainObject::Ones(points) / points;
 
-	PlainObject result = Convolve(y, w, ConvolveMode::Same);
-
-	return result;
+	return WeightedMovingAverage(y, w);
 }
 
 }; // namespace sablib
