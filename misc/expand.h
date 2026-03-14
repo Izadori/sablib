@@ -45,7 +45,6 @@ const typename Derived::PlainObject ExpandBoundaries(const Eigen::MatrixBase<Der
 /**
  * @brief Trims the specified number of elements from both ends of a vector.
  *
- * @tparam Derived The derived type of the Eigen object.
  * @param y The input vector to be trimmed.
  * @param n The number of elements to remove from each end.
  * @return The trimmed vector.
