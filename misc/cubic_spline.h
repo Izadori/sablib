@@ -8,6 +8,7 @@
 #define __SABLIB_CUBIC_SPLINE_H__
 
 #include <stdexcept>
+#include <type_traits>
 #include <vector>
 #include <Eigen/Eigen>
 
@@ -21,6 +22,8 @@ namespace sablib {
 template <typename Scalar>
 class CubicSpline final
 {
+	static_assert(std::is_floating_point_v<Scalar>, "Scalar must be a floating-point type.");
+
 public:
 	/**
 	 * @brief Default constructor.
