@@ -42,7 +42,7 @@ std::vector<double> BaselinePolynomial(
 		throw std::invalid_argument("BaselinePolynomial(): Too few indices.");
 	}
 
-	double max_index = y.size();
+	double max_index = y.size() - 1;
 	std::vector<unsigned int> sorted_indices = indices;
 	Eigen::VectorXd xx(indices.size()), yy(indices.size());
 
