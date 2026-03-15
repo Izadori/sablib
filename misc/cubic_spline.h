@@ -55,7 +55,21 @@ public:
 	 */
 	Scalar Interpolate(const double x);
 
+	/**
+	 * @brief Interpolates the value at a given x-coordinate.
+	 *
+	 * @param x The x-coordinate to interpolate.
+	 * @return The interpolated value at x.
+	 */
+	Scalar operator()(const double x)
+	{
+		return Interpolate(x);
+	}
+
 private:
+	Eigen::VectorX<Scalar> a, b, c, d;
+	Eigen::VectorX<Scalar> sp_x, sp_y;
+
 	/**
 	 * @brief Solves a tridiagonal system of equations using Thomas' algorithm (TDMA).
 	 *
@@ -69,9 +83,6 @@ private:
 		const Eigen::VectorX<Scalar>& lower, const Eigen::VectorX<Scalar>& diag,
 		const Eigen::VectorX<Scalar>& upper, const Eigen::VectorX<Scalar>& rhs
 	);
-
-	Eigen::VectorX<Scalar> a, b, c, d;
-	Eigen::VectorX<Scalar> sp_x, sp_y;
 };
 
 //
