@@ -9,7 +9,7 @@
 
 #include <stdexcept>
 #include <vector>
-#include <Eigen/Sparse>
+#include <Eigen/Eigen>
 
 namespace sablib {
 
@@ -40,6 +40,7 @@ public:
 	 *
 	 * @param x The x-coordinates of the data points.
 	 * @param y The y-coordinates of the data points.
+	 * @exception std::invalid_argument Thrown if x and y sizes differ, if size < 2, or if x is not strictly increasing.
 	 */
 	void Fit(const Eigen::VectorX<Scalar> & x, const Eigen::VectorX<Scalar> & y);
 
@@ -85,6 +86,14 @@ inline CubicSpline<Scalar>::CubicSpline(const Eigen::VectorX<Scalar>& x, const E
 template <typename Scalar>
 void CubicSpline<Scalar>::Fit(const Eigen::VectorX<Scalar> & x, const Eigen::VectorX<Scalar> & y)
 {
+	if (x.size() != y.size()) {
+		throw std::invalid_argument("CubicSpline::Fit(): x and y must have the same size.");
+	}
+
+	if (x.size() < 2) {
+		throw std::invalid_argument("CubicSpline::Fit(): At least 2 points are required.");
+	}
+
 	sp_x = x;
 	sp_y = y;
 
@@ -93,6 +102,9 @@ void CubicSpline<Scalar>::Fit(const Eigen::VectorX<Scalar> & x, const Eigen::Vec
 
 	for(int i = 0; i < n; i++) {
 		h(i) = x(i + 1) - x(i);
+		if (h(i) <= 0) {
+			throw std::invalid_argument("CubicSpline::Fit(): x must be strictly increasing.");
+		}
 	}
 
 	Eigen::VectorX<Scalar> lower = Eigen::VectorX<Scalar>::Zero(n + 1);
