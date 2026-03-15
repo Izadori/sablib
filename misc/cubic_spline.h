@@ -53,7 +53,7 @@ public:
 	 * @param x The x-coordinate to interpolate.
 	 * @return The interpolated value at x.
 	 */
-	Scalar Interpolate(const double x);
+	Scalar Interpolate(const double x) const;
 
 	/**
 	 * @brief Interpolates the value at a given x-coordinate.
@@ -61,7 +61,7 @@ public:
 	 * @param x The x-coordinate to interpolate.
 	 * @return The interpolated value at x.
 	 */
-	Scalar operator()(const double x)
+	Scalar operator()(const double x) const
 	{
 		return Interpolate(x);
 	}
@@ -185,7 +185,7 @@ Eigen::VectorX<Scalar> CubicSpline<Scalar>::SolveTridiagonal(
 // Implementation of Interpolate() method
 //
 template <typename Scalar>
-Scalar CubicSpline<Scalar>::Interpolate(const double x)
+Scalar CubicSpline<Scalar>::Interpolate(const double x) const
 {
 	int n = sp_x.size() - 1;
 	int i = n - 1;
