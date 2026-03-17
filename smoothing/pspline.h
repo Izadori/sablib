@@ -2,6 +2,9 @@
  * @file pspline.h
  * @brief Smoothing using penalized Spline(P-Spline)
  * @author Izadori
+ * @details
+ * References:
+ * @li Eilers, P. H. C.; Marx, B. Flexible Smoothing with B-Splines and Penalties. Stastical Science, 1996, 11(2), 89-121.
  */
 
 #ifndef __SABLIB_PSPLINE_H__
