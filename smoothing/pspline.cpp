@@ -1,6 +1,6 @@
 /**
  * @file pspline.cpp
- * @brief Smoothing with P-Spline(implementation)
+ * @brief Smoothing with penalized Spline(P-Spline)(implementation)
  * @author Izadori
  */
 
