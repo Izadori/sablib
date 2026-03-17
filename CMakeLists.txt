@@ -42,6 +42,7 @@ set(SABLIB_HEADERS
     misc/polyfit.h
     misc/spdiags.h
     smoothing/moving_average.h
+    smoothing/pspline.h
     smoothing/savitzky_golay.h
     smoothing/whittaker.h
 )
