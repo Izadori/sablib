@@ -100,7 +100,7 @@ public:
 	 * @brief Interpolates the value at a given x-coordinate using provided B-Spline coefficients.
 	 *
 	 * @param x The x-coordinate to interpolate.
-	 * @param coef The B-Spline coefficients.
+	 * @param coefficients The B-Spline coefficients.
 	 * @return The interpolated value at x.
 	 */
 	const Scalar Interpolate(const Scalar x, const Eigen::VectorX<Scalar> & coefficients) const;
