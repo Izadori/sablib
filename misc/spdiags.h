@@ -52,7 +52,7 @@ Spdiags(const Eigen::MatrixBase<Derived> & data, const Eigen::VectorXi & diags, 
 
 		for(int i = start_index; i < end_index; i++) {
 			if(i - diags(k) < row_size && i < column_size) {
-				triplets.push_back(T(i - diags(k), i, data(k, i)));
+				triplets.emplace_back(i - diags(k), i, data(k, i));
 			}
 		}
 	}
