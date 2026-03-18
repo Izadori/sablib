@@ -71,11 +71,7 @@ Alternatively, you can include specific algorithm headers to minimize dependenci
 
 ## Documentation
 
-API documentation can be generated using Doxygen.
-
-```bash
-doxygen Doxyfile
-```
+Please see the [GitHub Pages](https://izadori.github.io/sablib-docs/) for documentation.
 
 ## License
 
