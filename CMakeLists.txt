@@ -17,6 +17,7 @@ set(SABLIB_SOURCES
     baseline/airpls.cpp
     baseline/arpls.cpp
     baseline/asls.cpp
+    baseline/beads.cpp
     baseline/polynomial.cpp
     baseline/sma.cpp
     baseline/spline.cpp
@@ -31,6 +32,7 @@ set(SABLIB_HEADERS
     baseline/airpls.h
     baseline/arpls.h
     baseline/asls.h
+    baseline/beads.h
     baseline/polynomial.h
     baseline/sma.h
     baseline/spline.h
