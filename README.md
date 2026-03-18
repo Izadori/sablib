@@ -12,6 +12,7 @@ A C++ library for signal smoothing and baseline estimation.
 - **Linear/Polynomial**: Simple linear or polynomial baseline fitting to specified points.
 - **SMA**: Baseline estimation using iterative Simple Moving Average.
 - **Spline**: Baseline estimation using Cubic Spline interpolation.
+- **BEADS**: Baseline Estimation And Denoising using Sparsity.
 
 ### Smoothing
 
