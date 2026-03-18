@@ -69,7 +69,7 @@ BAfilt(const unsigned int d, const double frequency, const unsigned int length)
 //
 const std::tuple< std::vector<double>, std::vector<double> >
 BaselineBeads(
-	const std::vector<double> & y, const unsigned int d, const double frequency, const double r,
+	const std::vector<double> & y, const unsigned int s, const double frequency, const double r,
 	const double lambda0, const double lambda1, const double lambda2,
 	const unsigned int loop,  const double eps, const BeadsPenalty penalty
 )
@@ -117,7 +117,7 @@ BaselineBeads(
 	};
 
 	int length = yy.size();
-	auto [ A, B ] = BAfilt(d, frequency, length);
+	auto [ A, B ] = BAfilt(s, frequency, length);
 
 	Eigen::SparseMatrix<double> I, D1, D2;
 

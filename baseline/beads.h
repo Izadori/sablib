@@ -30,7 +30,7 @@ enum class BeadsPenalty
  * @brief Performs baseline estimation and denoising using Sparsity (BEADS).
  *
  * @param y The input data.
- * @param d Order of the derivative for baseline sparsity (typically 1 or 2).
+ * @param s Order of the derivative for baseline sparsity (typically 1 or 2).
  * @param frequency Sampling frequency of the signal.
  * @param r High-pass filter parameter (cut-off frequency relative to sampling frequency).
  * @param lambda0 Sparsity parameter for the baseline.
@@ -43,7 +43,7 @@ enum class BeadsPenalty
  */
 const std::tuple< std::vector<double>, std::vector<double> >
 BaselineBeads(
-	const std::vector<double> & y, const unsigned int d, const double frequency, const double r,
+	const std::vector<double> & y, const unsigned int s, const double frequency, const double r,
 	const double lambda0, const double lambda1, const double lambda2, const unsigned int loop = 30,
 	const double eps = 1e-3, const BeadsPenalty penalty = BeadsPenalty::L1_v2
 );
