@@ -10,7 +10,7 @@
 namespace sablib {
 
 //
-// Implementation of PSpline()
+// Implementation of PSpline() function
 //
 const std::vector<double> PSpline(
 	const std::vector<double> & y, const unsigned int knots_num,
