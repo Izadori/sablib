@@ -9,7 +9,6 @@
 
 #include <stdexcept>
 #include <vector>
-#include <Eigen/Eigen>
 
 #include "../misc/polyfit.h"
 

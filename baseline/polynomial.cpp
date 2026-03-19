@@ -4,6 +4,8 @@
  * @author Izadori
  */
 
+#include <Eigen/Eigen>
+
 #include "polynomial.h"
 
 namespace sablib {

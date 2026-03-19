@@ -11,7 +11,6 @@
 #define __SABLIB_SAVITZKY_GOLAY_H__
 
 #include <vector>
-#include <Eigen/Eigen>
 
 namespace sablib {
 
