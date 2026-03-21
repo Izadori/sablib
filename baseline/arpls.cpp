@@ -19,6 +19,26 @@ const std::vector<double> BaselineArPLS(
 	const unsigned int loop, const double eps
 )
 {
+	if(y.size() == 0) {
+		throw std::invalid_argument("BaselineArPLS(): the length of y is zero.");
+	}
+
+	if(lambda <= 0) {
+		throw std::invalid_argument("BaselineArPLS(): non-positive lambda value is given.");
+	}
+
+	if(s == 0 || s > 3) {
+		throw std::invalid_argument("BaselineArPLS(): s must be 1, 2 or 3.");
+	}
+
+	if(loop == 0) {
+		throw std::invalid_argument("BaselineArPLS(): loop is zero.");
+	}
+
+	if(eps <= 0) {
+		throw std::invalid_argument("BaselineArPLS(): non-positive eps value is given.");
+	}
+
 	size_t m = y.size();
 	Eigen::VectorXd yy, w, wt, z, d, tmp;
 	Eigen::SparseMatrix<double> I, D, lambdaDTD;

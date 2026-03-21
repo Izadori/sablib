@@ -13,6 +13,14 @@ namespace sablib {
 //
 const std::vector<double> BaselineSpline(const std::vector<double> & y, const std::vector<unsigned int> & indices)
 {
+	if(y.size() == 0 || indices.size() == 0) {
+		throw std::invalid_argument("BaselineSpline(): the length of y or indices is zero.");
+	}
+
+	if(y.size() < indices.size()) {
+		throw std::invalid_argument("BaselineSpline(): the length of indices is larger than y.");
+	}
+
 	double max_index = y.size() - 1;
 	Eigen::VectorXd xx(indices.size()), yy(indices.size());
 

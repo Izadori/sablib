@@ -297,9 +297,13 @@ void BSpline<Scalar>::Fit(const Eigen::VectorX<Scalar> & x, const Eigen::VectorX
 {
 	auto B = DesignMatrix(x);
 	Eigen::SparseMatrix<Scalar> BTB = B.transpose() * B;
-	Eigen::SimplicialLDLT<Eigen::SparseMatrix<Scalar>> solver;
+	Eigen::SimplicialLDLT< Eigen::SparseMatrix<Scalar> > solver;
 
 	solver.compute(BTB);
+
+	if(solver.info() != Eigen::Success) {
+		throw std::runtime_error("BSpline::Fit(): solver calculation fails.");
+	}
 
 	sp_coefficients = solver.solve(B.transpose() * y);
 }

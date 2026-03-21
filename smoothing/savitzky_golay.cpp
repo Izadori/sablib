@@ -5,7 +5,6 @@
  */
 
 #include <cmath>
-#include <cassert>
 
 #include "../misc/convolve.h"
 
@@ -23,7 +22,25 @@ const std::vector<double> SavitzkyGolayCoefficients(
 	unsigned int window = 2 * n + 1;
 	double p = 1;
 
-	assert(window > polyorder && window > derive && polyorder > derive);
+	if(n == 0) {
+		throw std::invalid_argument("SavitzkyGolayCoefficients(): n is zero.");
+	}
+
+	if(polyorder == 0) {
+		throw std::invalid_argument("SavitzkyGolayCoefficients(): polyorder is zero.");
+	}
+
+	if(window <= polyorder) {
+		throw std::invalid_argument("SavitzkyGolayCoefficients(): window size (2 * n + 1) must be greater than polyorder.");
+	}
+
+	if(window <= derive) {
+		throw std::invalid_argument("SavitzkyGolayCoefficients(): window size (2 * n + 1) must be greater than derive.");
+	}
+
+	if(polyorder <= derive) {
+		throw std::invalid_argument("SavitzkyGolayCoefficients(): polyorder must be greater than derive.");
+	}
 
 	Eigen::VectorXd v = Eigen::VectorXd::LinSpaced(window, (int)-n, n);
 	Eigen::MatrixXd x = Eigen::MatrixXd::Ones(window, polyorder + 1);
@@ -57,6 +74,10 @@ const std::vector<double> SavitzkyGolay(
 	const unsigned int n, const unsigned int polyorder, const unsigned derive, const double delta
 )
 {
+	if(y.size() == 0) {
+		throw std::invalid_argument("SavitzkyGolay(): the length of y is zero.");
+	}
+
 	std::vector<double> coeff = SavitzkyGolayCoefficients(n, polyorder, derive, delta);
 	Eigen::VectorXd w = Eigen::VectorXd::Map(coeff.data(), coeff.size());
 	Eigen::VectorXd yy = Eigen::VectorXd::Map(y.data(), y.size());

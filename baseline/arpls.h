@@ -10,6 +10,8 @@
 #ifndef __SABLIB_ARPLS_H__
 #define __SABLIB_ARPLS_H__
 
+#include <stdexcept>
+
 #include "../smoothing/whittaker.h"
 
 namespace sablib {
@@ -23,6 +25,7 @@ namespace sablib {
  * @param loop Maximum number of iterations.
  * @param eps Convergence threshold.
  * @return The estimated baseline.
+ * @exception std::invalid_argument One or more parameters are wrong.
  */
 const std::vector<double> BaselineArPLS(
 	std::vector<double> & y, const double lambda, const unsigned int s = 2,

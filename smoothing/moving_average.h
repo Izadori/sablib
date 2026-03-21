@@ -8,6 +8,7 @@
 #define __SABLIB_MOVING_AVERAGE_H__
 
 #include <cmath>
+#include <stdexcept>
 #include <vector>
 
 #include "../misc/expand.h"
@@ -29,6 +30,7 @@ const std::vector<double> WeightedMovingAverage(const std::vector<double> & y, c
  * @param y The data to be averaged.
  * @param w Weights.
  * @return The data after applying the moving average.
+ * @exception std::invalid_argument If the length of y or w is zero.
  */
 template <typename Derived>
 const typename Derived::PlainObject WeightedMovingAverage(
@@ -38,6 +40,10 @@ const typename Derived::PlainObject WeightedMovingAverage(
 	// Although parameters are received as MatrixBase<Derived>, only vector classes are allowed.
 	// Others will be rejected at compile time.
 	static_assert(Derived::IsVectorAtCompileTime, "Error: y and w are not vector.");
+
+	if(y.size() == 0 || w.size() == 0) {
+		throw std::invalid_argument("WeightedMovingAverage(): the length of y or w is zero.");
+	}
 
 	using PlainObject = typename Derived::PlainObject;
 
@@ -75,11 +81,16 @@ const std::vector<double> MovingAverage(const std::vector<double> & y, const uns
  * @param y The data to be averaged.
  * @param n Half-width of the moving average window (calculated using `2 * n + 1` points).
  * @return The data after applying the moving average.
+ * @exception std::invalid_argument If n is zero.
  */
 template <typename Derived>
 const typename Derived::PlainObject MovingAverage(const Eigen::MatrixBase<Derived> & y, const unsigned int n)
 {
 	using PlainObject = typename Derived::PlainObject;
+
+	if(n == 0) {
+		throw std::invalid_argument("MovingAverage(): n is zero.");
+	}
 
 	int points = 2 * n + 1;
 	PlainObject w = PlainObject::Ones(points) / points;

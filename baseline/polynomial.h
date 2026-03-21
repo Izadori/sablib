@@ -21,6 +21,7 @@ namespace sablib {
  * @param index1 The index of the first point.
  * @param index2 The index of the second point.
  * @return The estimated linear baseline.
+ * @exception std::invalid_argument One or more parameters are wrong.
  */
 std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int index1, const unsigned int index2);
 
@@ -31,6 +32,7 @@ std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int i
  * @param polyorder The order of the polynomial to fit.
  * @param indices The indices of the points used for polynomial fitting.
  * @return The estimated polynomial baseline.
+ * @exception std::invalid_argument One or more parameters are wrong.
  */
 std::vector<double> BaselinePolynomial(
 	std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices

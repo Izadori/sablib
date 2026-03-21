@@ -10,6 +10,7 @@
 #ifndef __SABLIB_SAVITZKY_GOLAY_H__
 #define __SABLIB_SAVITZKY_GOLAY_H__
 
+#include <stdexcept>
 #include <vector>
 
 namespace sablib {
@@ -22,6 +23,7 @@ namespace sablib {
  * @param derive The order of the derivative to compute (0 for smoothing only).
  * @param delta The spacing of the samples.
  * @return The calculated filter coefficients.
+ * @throw std::invalid_argument One or more parameters are wrong.
  */
 const std::vector<double> SavitzkyGolayCoefficients(
 	const unsigned int n, const unsigned int polyorder, const unsigned derive = 0, const double delta = 1
@@ -36,6 +38,7 @@ const std::vector<double> SavitzkyGolayCoefficients(
  * @param derive The order of the derivative to compute (0 for smoothing only).
  * @param delta The spacing of the samples.
  * @return The filtered (smoothed or differentiated) data.
+ * @throw std::invalid_argument If the length of y is zero.
  */
 const std::vector<double> SavitzkyGolay(
 	const std::vector<double> & y,

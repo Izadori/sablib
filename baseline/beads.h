@@ -9,6 +9,7 @@
  * @li [Kotaro Saito's pybeads implementation](https://github.com/skotaro/pybeads/)
  */
 
+#include <stdexcept>
 #include <tuple>
 #include <vector>
 
@@ -40,6 +41,7 @@ enum class BeadsPenalty
  * @param eps Convergence threshold.
  * @param penalty Penalty type (L1_v1 or L1_v2).
  * @return A tuple containing (baseline, denoised signal).
+ * @exception std::invalid_argument One or more parameters are wrong.
  */
 const std::tuple< std::vector<double>, std::vector<double> >
 BaselineBeads(

@@ -11,6 +11,7 @@
 #ifndef __SABLIB_WHITTAKER_H__
 #define __SABLIB_WHITTAKER_H__
 
+#include <stdexcept>
 #include <vector>
 
 #include "../misc/diff.h"
@@ -25,6 +26,7 @@ namespace sablib {
  * @param lambda Smoothing parameter (larger values lead to more smoothing, but may flatten peaks).
  * @param s The order of the difference (usually s = 1, 2, or 3).
  * @return The smoothed data.
+ * @throw std::invalid_argument One or more parameters wrong.
  */
 const std::vector<double> Whittaker(
 	const std::vector<double> & y, const std::vector<double> & w,
@@ -71,6 +73,11 @@ Whittaker(
 
 	W = w.asDiagonal();
 	solver.compute(W + lambdaDTD);
+
+	if(solver.info() != Eigen::Success) {
+		throw std::runtime_error("Whittaker(): solver calculation fails.");
+	}
+
 	z = solver.solve(W * y);
 
 	return z;

@@ -7,7 +7,6 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <functional>
-#include <stdexcept>
 #include <Eigen/Eigen>
 
 #include "../misc/convolve.h"
@@ -74,6 +73,34 @@ BaselineBeads(
 	const unsigned int loop,  const double eps, const BeadsPenalty penalty
 )
 {
+	if(y.size() == 0) {
+		throw std::invalid_argument("BaselineBeads(): the length of y is zero.");
+	}
+
+	if(s == 0 || s > 3) {
+		throw std::invalid_argument("BaselineBeads(): s must be 1, 2 or 3.");
+	}
+
+	if(frequency <= 0) {
+		throw std::invalid_argument("BaselineBeads(): non-positive frequency value is given.");
+	}
+
+	if(r <= 0) {
+		throw std::invalid_argument("BaselineBeads(): non-positive r value is given.");
+	}
+
+	if(lambda0 <= 0 || lambda1 <= 0 || lambda2 <= 0) {
+		throw std::invalid_argument("BaselineBeads(): non-positive lambda value is given.");
+	}
+
+	if(loop == 0) {
+		throw std::invalid_argument("BaselineBeads(): loop is zero.");
+	}
+
+	if(eps <= 0) {
+		throw std::invalid_argument("BaselineBeads(): non-positive eps value is given.");
+	}
+
 	const double eps0 = 1e-6;
 	const double eps1 = 1e-6;
 
@@ -130,6 +157,10 @@ BaselineBeads(
 
 	solverA.compute(A);
 
+	if(solverA.info() != Eigen::Success) {
+		throw std::runtime_error("BaselineBeads(): solverA calculation fails.");
+	}
+
 	Eigen::SparseMatrix<double> BTB = B.transpose() * B;
 	Eigen::VectorXd b = Eigen::VectorXd::Constant(length, (1 - r) / 2);
 	Eigen::VectorXd d = BTB * (solverA.solve(yy)) - lambda0 * A.transpose() * b;
@@ -157,6 +188,10 @@ BaselineBeads(
 
 		M = 2 * lambda0 * G + D1.transpose() * L1 * D1 + D2.transpose() * L2 * D2;
 		solverQ.compute(BTB + A.transpose() * M * A);
+
+		if(solverQ.info() != Eigen::Success) {
+			throw std::runtime_error("BaselineBeads(): solverQ calculation fails.");
+		}
 
 		x = A * solverQ.solve(d);
 

@@ -10,6 +10,7 @@
 #ifndef __SABLIB_PSPLINE_H__
 #define __SABLIB_PSPLINE_H__
 
+#include <stdexcept>
 #include <vector>
 
 #include "../misc/bspline.h"
@@ -28,6 +29,7 @@ namespace sablib {
  * @param s The order of the difference penalty (default is 2).
  * @param lambda The smoothing parameter (default is 1.0). Larger values result in smoother curves.
  * @return A vector containing the smoothed data points.
+ * @throw std::invalid_argument One or more parameters are wrong.
  */
 const std::vector<double> PSpline(
 	const std::vector<double> & y, const unsigned int knots_num,

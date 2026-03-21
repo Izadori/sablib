@@ -16,6 +16,22 @@ const std::vector<double> Whittaker(
 	const double lambda, const unsigned int s
 )
 {
+	if(y.size() == 0) {
+		throw std::invalid_argument("Whittaker(): length of y is zero.");
+	}
+
+	if(y.size() != w.size()) {
+		throw std::invalid_argument("Whittaker(): the sizes of y and w do not match.");
+	}
+
+	if(lambda <= 0) {
+		throw std::invalid_argument("Whittaker(): non-positive lambda value is given.");
+	}
+
+	if(s > 3 || s == 0) {
+		throw std::invalid_argument("Whittaker(): s must be 1, 2, or 3.");
+	}
+
 	Eigen::VectorXd yy = Eigen::VectorXd::Map(y.data(), y.size());
 	Eigen::VectorXd ww = Eigen::VectorXd::Map(w.data(), w.size());
 	Eigen::VectorXd z;

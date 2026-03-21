@@ -7,6 +7,7 @@
 #ifndef __SABLIB_SPLINE_H__
 #define __SABLIB_SPLINE_H__
 
+#include <stdexcept>
 #include <vector>
 
 #include "../misc/cubic_spline.h"
@@ -19,6 +20,7 @@ namespace sablib {
  * @param y The input data for baseline estimation.
  * @param indices The indices of the points to be used as knots for the cubic spline.
  * @return The estimated baseline.
+ * @exception std::invalid_argument One or more parameters are wrong.
  */
 const std::vector<double> BaselineSpline(const std::vector<double> & y, const std::vector<unsigned int> & indices);
 

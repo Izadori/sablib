@@ -16,6 +16,30 @@ const std::vector<double> BaselineAsLS(
 	const unsigned int loop, const double eps
 )
 {
+	if(y.size() == 0) {
+		throw std::invalid_argument("BaselineAsLS(): the length of y is zero.");
+	}
+
+	if(lambda <= 0) {
+		throw std::invalid_argument("BaselineAsLS(): non-positive lambda value is given.");
+	}
+
+	if(p <= 0) {
+		throw std::invalid_argument("BaselineAsLS(): non-positive p value is given.");
+	}
+
+	if(s == 0 || s > 3) {
+		throw std::invalid_argument("BaselineAsLS(): s must be 1, 2 or 3.");
+	}
+
+	if(loop == 0) {
+		throw std::invalid_argument("BaselineAsLS(): loop is zero.");
+	}
+
+	if(eps <= 0) {
+		throw std::invalid_argument("BaselineAsLS(): non-positive eps value is given.");
+	}
+
 	size_t m = y.size();
 	Eigen::VectorXd yy, w, w_old, z, pv(m), npv;
 	Eigen::SparseMatrix<double> I, D, lambdaDTD;

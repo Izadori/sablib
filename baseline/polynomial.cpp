@@ -15,6 +15,10 @@ namespace sablib {
 //
 std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int index1, const unsigned int index2)
 {
+	if(y.size() == 0) {
+		throw std::invalid_argument("BaselineLinear(): the length of y is zero.");
+	}
+
 	if(index1 >= index2 || y.size() <= index1 || y.size() <= index2) {
 		throw std::invalid_argument("BaselineLinear(): illegal indices");
 	}
@@ -40,6 +44,14 @@ std::vector<double> BaselinePolynomial(
 	std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices
 )
 {
+	if(y.size() == 0 || indices.size() == 0) {
+		throw std::invalid_argument("BaselinePolynomial(): the length of y or indices is zero.");
+	}
+
+	if(y.size() < indices.size()) {
+		throw std::invalid_argument("BaselinePolynomial(); the length of indices is larger than y.");
+	}
+
 	if(polyorder >= indices.size()) {
 		throw std::invalid_argument("BaselinePolynomial(): Too few indices.");
 	}
