@@ -44,12 +44,14 @@ If Eigen3 is not found, please try `cmake .. -DCMAKE_PREFIX_PATH="path/to/Eigen3
 
 ### Integrating with CMake
 
-You can easily integrate `sablib` into your project by adding it as a subdirectory:
+You can add `sablib` to your project as follows:
 
 ```cmake
 # In your CMakeLists.txt
-add_subdirectory(sablib)
-target_link_libraries(your_project_target PUBLIC sablib)
+set(SABLIB_DIR "/path/to/sablib")
+include_directories(${SABLIB_DIR})
+find_library(SABLIB_LIB NAMES sablib libsablib PATHS "${SABLIB_DIR}/build")
+target_link_libraries(my_app PRIVATE ${SABLIB_LIB} Eigen3::Eigen)
 ```
 
 Ensure Eigen3 is configured in your project (e.g., via `find_package(Eigen3 REQUIRED)`).
