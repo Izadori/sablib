@@ -5,7 +5,6 @@
  */
 
 #include <cmath>
-#include <limits>
 
 #include "arpls.h"
 
