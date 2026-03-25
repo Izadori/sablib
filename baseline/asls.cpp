@@ -4,6 +4,8 @@
  * @author Izadori
  */
 
+#include "../smoothing/whittaker.h"
+
 #include "asls.h"
 
 namespace sablib {

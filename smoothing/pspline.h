@@ -13,8 +13,6 @@
 #include <stdexcept>
 #include <vector>
 
-#include "../misc/bspline.h"
-
 namespace sablib {
 
 /**

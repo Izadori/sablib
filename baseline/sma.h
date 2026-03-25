@@ -7,7 +7,7 @@
 #ifndef __SABLIB_SMA_H__
 #define __SABLIB_SMA_H__
 
-#include "../smoothing/moving_average.h"
+#include <vector>
 
 namespace sablib {
 

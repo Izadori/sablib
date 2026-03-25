@@ -11,8 +11,7 @@
 #define __SABLIB_ARPLS_H__
 
 #include <stdexcept>
-
-#include "../smoothing/whittaker.h"
+#include <vector>
 
 namespace sablib {
 

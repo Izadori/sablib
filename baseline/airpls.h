@@ -12,8 +12,7 @@
 #define __SABLIB_AIRPLS_H__
 
 #include <stdexcept>
-
-#include "../smoothing/whittaker.h"
+#include <vector>
 
 namespace sablib {
 

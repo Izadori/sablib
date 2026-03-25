@@ -4,6 +4,8 @@
  * @author Izadori
  */
 
+#include "../smoothing/moving_average.h"
+
 #include "sma.h"
 
 namespace sablib {

@@ -5,6 +5,8 @@
  */
 
 #include "../misc/diff.h"
+#include "../misc/bspline.h"
+
 #include "pspline.h"
 
 namespace sablib {

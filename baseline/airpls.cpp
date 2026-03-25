@@ -6,6 +6,8 @@
 
 #include <cmath>
 
+#include "../smoothing/whittaker.h"
+
 #include "airpls.h"
 
 namespace sablib {

@@ -10,8 +10,6 @@
 #include <stdexcept>
 #include <vector>
 
-#include "../misc/polyfit.h"
-
 namespace sablib {
 
 /**

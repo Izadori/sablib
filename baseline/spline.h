@@ -10,8 +10,6 @@
 #include <stdexcept>
 #include <vector>
 
-#include "../misc/cubic_spline.h"
-
 namespace sablib {
 
 /**

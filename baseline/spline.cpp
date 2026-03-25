@@ -4,6 +4,8 @@
  * @author Izadori
  */
 
+#include "../misc/cubic_spline.h"
+
 #include "spline.h"
 
 namespace sablib {
