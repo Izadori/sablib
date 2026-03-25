@@ -45,7 +45,15 @@ const std::vector<double> BaselineArPLS(
 	double mean, sd;
 	Eigen::Index ct;
 
-	const double overflow = std::log(std::numeric_limits<double>::max()) / 2;
+	auto logistic = [](const double xx) {
+		if(xx < 0) {
+			double t = std::exp(xx);
+			return t / (t + 1);
+		}
+		else {
+			return 1 / (1 + std::exp(-xx));
+		}
+	};
 
 	yy = Eigen::VectorXd::Map(y.data(), m);
 
@@ -65,9 +73,7 @@ const std::vector<double> BaselineArPLS(
 		mean = (d.array() < 0).select(d, 0).sum() / ct;
 		sd = std::sqrt((d.array() < 0).select((d.array() - mean).matrix(), 0).squaredNorm() / (ct - 1));
 
-		tmp = ((d.array() + mean - 2 * sd) / sd).matrix();
-		tmp = (tmp.array() >= overflow).select(0, (1.0 / (1 + (2 * tmp).array().exp())).matrix());
-
+		tmp = (-2 * (d.array() + mean - 2 * sd) / sd).matrix().unaryExpr(logistic);
 		wt = (d.array() >= 0).select(tmp, 1);
 
 		if ((w - wt).norm() / w.norm() < eps) {
