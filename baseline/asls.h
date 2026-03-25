@@ -4,8 +4,8 @@
  * @author Izadori
  * @details
  * References:
- * @li Eilers, P. A Perfect Smoother. Analytical Chemistry, 2003, 75(14), 3631-3636.
- * @li Eilers, P. H. C.; Boelens, H. F. M. Baseline Correction with Asymmetric Least Squares Smoothing Leiden University Medical Centre Report 2005, 1(1), 1-5.
+ * @li Eilers, P. "A Perfect Smoother" Analytical Chemistry, 2003, 75(14), 3631-3636.
+ * @li Eilers, P. H. C.; Boelens, H. F. M. "Baseline Correction with Asymmetric Least Squares Smoothing" Leiden University Medical Centre Report 2005, 1(1), 1-5.
  */
 
 #ifndef __SABLIB_ASLS_H__

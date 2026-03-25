@@ -4,8 +4,8 @@
  * @author Izadori
  * @details
  * References:
- * @li Whittaker, E. T. On A New Method of Graduation. Proc. Edinburgh Math. Soc., 1922, 41, 63-75.
- * @li Eilers, P. A Perfect Smoother. Analytical Chemistry, 2003, 75(14), 3631-3636.
+ * @li Whittaker, E. T. "On A New Method of Graduation" Proc. Edinburgh Math. Soc., 1922, 41, 63-75.
+ * @li Eilers, P. "A Perfect Smoother" Analytical Chemistry, 2003, 75(14), 3631-3636.
  */
 
 #ifndef __SABLIB_WHITTAKER_H__

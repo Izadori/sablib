@@ -4,7 +4,7 @@
  * @author Izadori
  * @details
  * References:
- * @li Ning, X.; Selesnick, I. W.; Duval, L. Chromatogram baseline estimation and denoising using sparsity. Chemometrics and Intelligent Laboratory Systems, 2014, 139, 156-167.
+ * @li Ning, X.; Selesnick, I. W.; Duval, L. "Chromatogram baseline estimation and denoising using sparsity" Chemometrics and Intelligent Laboratory Systems, 2014, 139, 156-167.
  * @li [Duval's MATLAB implemetation](http://www.mathworks.com/matlabcentral/fileexchange/49974-beads--baseline-estimation-and-denoising-w--sparsity--chromatogram-signals-)
  * @li [Kotaro Saito's pybeads implementation](https://github.com/skotaro/pybeads/)
  */

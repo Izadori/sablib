@@ -4,7 +4,7 @@
  * @author Izadori
  * @details
  * References:
- * @li Baek, S.-J.; Park, A.; Ahn, Y.-J.; Choo, J. Baseline Correction Using Asymmetrically Reweighted Penalized Least Squares Smoothing. Analyst 2015, 140(1), 250–257.
+ * @li Baek, S.-J.; Park, A.; Ahn, Y.-J.; Choo, J. "Baseline Correction Using Asymmetrically Reweighted Penalized Least Squares Smoothing" Analyst 2015, 140(1), 250–257.
  */
 
 #ifndef __SABLIB_ARPLS_H__

@@ -4,7 +4,7 @@
  * @author Izadori
  * @details
  * References:
- * @li Savitzky, A.; Golay, M. J. Smoothing And differentiation of Data by Simplified Least Squares Procedures. Anal. Chem. 1964, 36(8), 1627-1639.
+ * @li Savitzky, A.; Golay, M. J. "Smoothing And differentiation of Data by Simplified Least Squares Procedures" Anal. Chem. 1964, 36(8), 1627-1639.
  */
 
 #ifndef __SABLIB_SAVITZKY_GOLAY_H__
