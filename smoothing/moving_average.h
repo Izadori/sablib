@@ -98,6 +98,32 @@ const typename Derived::PlainObject MovingAverage(const Eigen::MatrixBase<Derive
 	return WeightedMovingAverage(y, w);
 }
 
+/**
+ * @brief Generates a Gaussian kernel.
+ *
+ * @param n Half-width of the Gaussian window (total size is `2 * n + 1`).
+ * @param sigma The standard deviation of the Gaussian distribution.
+ * @return A vector containing the Gaussian kernel coefficients.
+ * @exception std::invalid_argument If n is zero or sigma is non-positive.
+ */
+const std::vector<double> GaussianKernel(const unsigned int n, const double sigma);
+
+/**
+ * @brief Performs Gaussian smoothing on the input signal.
+ *
+ * This is a convenience function that generates a Gaussian kernel and then
+ * applies it using `WeightedMovingAverage`.
+ *
+ * @param y The data to be smoothed.
+ * @param n Half-width of the Gaussian window (total size is `2 * n + 1`).
+ * @param sigma The standard deviation of the Gaussian distribution.
+ * @return The data after applying the Gaussian filter.
+ */
+inline const std::vector<double> GaussianFilter(const std::vector<double> & y, const unsigned int n, const double sigma)
+{
+	return WeightedMovingAverage(y, GaussianKernel(n, sigma));
+}
+
 }; // namespace sablib
 
 #endif // __SABLIB_MOVING_AVERAGE_H__
