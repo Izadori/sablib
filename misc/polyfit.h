@@ -41,10 +41,10 @@ Vandermonde(const Eigen::MatrixBase<Derived> & x, const unsigned int polyorder)
 	unsigned int m = polyorder + 1;
 	Eigen::MatrixX<Scalar> V(n, m);
 
-	for(int i = 0; i < n; ++i) {
+	for(unsigned int i = 0; i < n; ++i) {
 		Scalar val = 1.0;
 
-		for(int j = 0; j < m; ++j) {
+		for(unsigned int j = 0; j < m; ++j) {
 			V(i, j) = val;
 			val *= x(i);
 		}
