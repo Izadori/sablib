@@ -18,6 +18,7 @@ set(SABLIB_SOURCES
     baseline/arpls.cpp
     baseline/asls.cpp
     baseline/beads.cpp
+    baseline/imodpoly.cpp
     baseline/modpoly.cpp
     baseline/polynomial.cpp
     baseline/sma.cpp
@@ -34,6 +35,7 @@ set(SABLIB_HEADERS
     baseline/arpls.h
     baseline/asls.h
     baseline/beads.h
+    baseline/imodpoly.h
     baseline/modpoly.h
     baseline/polynomial.h
     baseline/sma.h
