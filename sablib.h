@@ -15,6 +15,7 @@
 #include "baseline/sma.h"
 #include "baseline/polynomial.h"
 #include "baseline/spline.h"
+#include "baseline/modpoly.h"
 #include "baseline/asls.h"
 #include "baseline/airpls.h"
 #include "baseline/arpls.h"
