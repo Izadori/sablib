@@ -1,6 +1,6 @@
 /**
  * @file polyfit.h
- * @brief Polynomial fitting using the least squares method (Gauss-Newton for linear models)
+ * @brief Polynomial fitting using the least squares method (Gauss-Newton for linear models) and evaluating polynomial function
  * @author Izadori
  */
 
@@ -15,7 +15,6 @@ namespace sablib {
 /**
  * @brief Generates a Vandermonde matrix for a given vector and polynomial order.
  *
- * @tparam Derived The Eigen vector type.
  * @param x The input vector of data points.
  * @param polyorder The order of the polynomial (columns in the matrix will be polyorder + 1).
  * @return The generated Vandermonde matrix.
@@ -57,7 +56,6 @@ Vandermonde(const Eigen::MatrixBase<Derived> & x, const unsigned int polyorder)
 /**
  * @brief Solves the polynomial least squares fitting problem using a pre-calculated Vandermonde matrix.
  *
- * @tparam Derived The Eigen vector type.
  * @param V The Vandermonde matrix.
  * @param y The target vector of data points.
  * @return The coefficients of the fitted polynomial.
@@ -86,7 +84,6 @@ PolyFit(
  *
  * This function uses the normal equations, which is the Gauss-Newton method applied to a linear model.
  *
- * @tparam Derived The derived type of the Eigen object.
  * @param x The x-coordinates of the data points.
  * @param y The y-coordinates of the data points.
  * @param polyorder The order of the polynomial to fit.
@@ -115,11 +112,10 @@ PolyFit(const Eigen::MatrixBase<Derived> & x, const Eigen::MatrixBase<Derived> &
 /**
  * @brief Evaluates the polynomial at specified points using a pre-calculated Vandermonde matrix.
  *
- * @tparam Derived The Eigen vector type.
  * @param coeff The coefficients of the polynomial.
  * @param V The Vandermonde matrix.
  * @return The evaluated values.
- * @exception std::invalid_argument If the length of coeff is zero.
+ * @exception std::invalid_argument If the length of coeff is zero or the number of columns in V does not match the size of coeff.
  */
 template <typename Derived>
 const typename Derived::PlainObject
@@ -136,13 +132,16 @@ PolyVal(
 		throw std::invalid_argument("PolyVal(): the length of coeff is zero.");
 	}
 
+	if(V.cols() != coeff.size()) {
+		throw std::invalid_argument("PolyVal(): the sizes of V and coeff do not match.");
+	}
+
 	return V * coeff;
 }
 
 /**
  * @brief Evaluates the polynomial at specified x-coordinates.
  *
- * @tparam Derived The Eigen vector type.
  * @param coeff The coefficients of the polynomial.
  * @param x The x-coordinates where the polynomial will be evaluated.
  * @return The evaluated values.
@@ -153,9 +152,39 @@ PolyVal(const Eigen::MatrixBase<Derived> & coeff, const Eigen::MatrixBase<Derive
 {
 	// Although parameters are received as MatrixBase<Derived>, only vector classes are allowed.
 	// Others will be rejected at compile time.
-	static_assert(Derived::IsVectorAtCompileTime, "Error: coeff is not vector.");
+	static_assert(Derived::IsVectorAtCompileTime, "Error: coeff or x is not vector.");
 
 	return PolyVal(coeff, Vandermonde(x, coeff.size() - 1));
+}
+
+/**
+ * @brief Evaluates the polynomial at single specified x-coordinate.
+ *
+ * @param coeff The coefficients of the polynomial.
+ * @param x The x-coordinate where the polynomial will be evaluated.
+ * @return The evaluated value.
+ * @exception std::invalid_argument If the length of coeff is zero.
+ */
+template <typename Derived>
+const typename Derived::PlainObject::Scalar
+PolyVal(const Eigen::MatrixBase<Derived> & coeff, const typename Derived::PlainObject::Scalar x)
+{
+	// Although parameters are received as MatrixBase<Derived>, only vector classes are allowed.
+	// Others will be rejected at compile time.
+	static_assert(Derived::IsVectorAtCompileTime, "Error: coeff is not vector.");
+
+	if(coeff.size() == 0) {
+		throw std::invalid_argument("PolyVal(): the length of coeff is zero.");
+	}
+
+	typename Derived::PlainObject::Scalar val = 0, xx = 1.0;
+
+	for(int i = 0; i < coeff.size(); i++) {
+		val += coeff(i) * xx;
+		xx  *= x;
+	}
+
+	return val;
 }
 
 }; // namespace sablib
