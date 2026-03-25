@@ -4,8 +4,6 @@
  * @author Izadori
  */
 
-#include <Eigen/Eigen>
-
 #include "../misc/polyfit.h"
 
 #include "polynomial.h"

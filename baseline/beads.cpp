@@ -7,7 +7,6 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <functional>
-#include <Eigen/Eigen>
 
 #include "../misc/convolve.h"
 #include "../misc/diff.h"
