@@ -9,6 +9,8 @@ A C++ library for signal smoothing and baseline estimation, powered by Eigen.
 - **Linear/Polynomial**: Robust linear or polynomial baseline fitting to anchor points.
 - **Spline**: Cubic Spline interpolation-based baseline estimation.
 - **SMA**: Iterative Simple Moving Average for baseline estimation.
+- **ModPoly**: Modified Polynomial.
+- **IModPoly**: Improved ModPoly.
 - **AsLS**: Asymmetric Least Squares.
 - **airPLS**: Adaptive Iteratively Reweighted Penalized Least Squares.
 - **arPLS**: Asymmetrically Reweighted Penalized Least Squares.
