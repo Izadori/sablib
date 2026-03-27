@@ -24,6 +24,7 @@ set(SABLIB_SOURCES
     baseline/sma.cpp
     baseline/spline.cpp
     smoothing/moving_average.cpp
+    smoothing/moving_median.cpp
     smoothing/pspline.cpp
     smoothing/savitzky_golay.cpp
     smoothing/whittaker.cpp
@@ -48,6 +49,7 @@ set(SABLIB_HEADERS
     misc/polyfit.h
     misc/spdiags.h
     smoothing/moving_average.h
+    smoothing/moving_median.h
     smoothing/pspline.h
     smoothing/savitzky_golay.h
     smoothing/whittaker.h

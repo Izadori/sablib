@@ -8,6 +8,7 @@
 #define __SABLIB_H__
 
 #include "smoothing/moving_average.h"
+#include "smoothing/moving_median.h"
 #include "smoothing/savitzky_golay.h"
 #include "smoothing/whittaker.h"
 #include "smoothing/pspline.h"
