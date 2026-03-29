@@ -36,6 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #define _USE_MATH_DEFINES
+#include <algorithm>
 #include <cmath>
 #include <functional>
 
@@ -200,7 +201,7 @@ BaselineBeads(
 	Eigen::VectorXd x = yy;
 
 	double prev_c = 0.5
-		* (B * solverA.solve(x)).unaryExpr([](const double xx){ return xx * xx; }).sum()
+		* (B * solverA.solve(x)).array().square().sum()
 		+ lambda0 * x.unaryExpr(theta).sum()
 		+ lambda1 * (D1 * x).unaryExpr(phi).sum()
 		+ lambda2 * (D2 * x).unaryExpr(phi).sum();
@@ -227,7 +228,7 @@ BaselineBeads(
 
 		Eigen::VectorXd a = yy - x;
 		double c = 0.5
-			* (B * solverA.solve(a)).unaryExpr([](const double xx){ return xx * xx; }).sum()
+			* (B * solverA.solve(a)).array().square().sum()
 			+ lambda0 * x.unaryExpr(theta).sum()
 			+ lambda1 * (D1 * x).unaryExpr(phi).sum()
 			+ lambda2 * (D2 * x).unaryExpr(phi).sum();
@@ -248,6 +249,52 @@ BaselineBeads(
 	Eigen::VectorXd::Map(x_result.data(), x.size()) = x;
 
 	return std::tuple< std::vector<double>, std::vector<double> >(f_result, x_result);
+}
+
+//
+// Implementation of BeadsExpandBoundaries() function
+//
+const std::vector<double> BeadsExpandBoundaries(const std::vector<double> & y, const unsigned int n)
+{
+	if(y.size() == 0) {
+		throw std::invalid_argument("BeadsExpandBoundaries(): the length of y is zero.");
+	}
+
+	std::vector<double> result(y.size() + 2 * n);
+
+	auto it1 = result.begin();
+	auto it2 = result.rbegin();
+	for(unsigned int i = 0; i < n; i++, it1++, it2++) {
+		double x = (double)i / (n - 1);
+		double t = std::sqrt(x);
+		*it1 = y.front() * t;
+		*it2 = y.back() * t;
+	}
+
+	std::copy(y.begin(), y.end(), result.begin() + n);
+
+	return result;
+}
+
+//
+// Implementation of BeadsTrimBoundaries() function
+//
+const std::vector<double> BeadsTrimBoundaries(const std::vector<double> & y, const unsigned int n)
+{
+	if(y.size() == 0) {
+		throw std::invalid_argument("BeadsTrimBoundaries(): the length of y is zero.");
+	}
+
+	if(y.size() < 2 * n) {
+		throw std::invalid_argument("BeadsTrimBoundaries(): the length of y is too short.");
+	}
+
+	std::vector<double> result(y.size() - 2 * n);
+	auto it = y.begin() + n;
+
+	std::copy(it, it + result.size(), result.begin());
+
+	return result;
 }
 
 }; // namespace sablib

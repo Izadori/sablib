@@ -50,6 +50,28 @@ BaselineBeads(
 	const double eps = 1e-3, const BeadsPenalty penalty = BeadsPenalty::L1_v2
 );
 
+/**
+ * @brief Expands the signal boundaries by padding with a tapered sequence.
+ *
+ * @param y The input data vector.
+ * @param n The number of elements to add at each end.
+ * @return A expanded vector.
+ * @exception std::invalid_argument The length of y is zero.
+ */
+const std::vector<double>
+BeadsExpandBoundaries(const std::vector<double> & y, const unsigned int n = 400);
+
+/**
+ * @brief Trims the expanded signal boundaries.
+ *
+ * @param y The input data vector (expanded signal).
+ * @param n The number of elements to trim from each end.
+ * @return A trimmed vector.
+ * @exception std::invalid_argument The length of y is zero or less than `2 * n`.
+ */
+const std::vector<double>
+BeadsTrimBoundaries(const std::vector<double> & y, const unsigned int n = 400);
+
 }; // namespace sablib
 
 #endif // _SABLIB_BEADS_H__
