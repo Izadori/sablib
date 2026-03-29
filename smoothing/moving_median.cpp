@@ -1,8 +1,9 @@
-/*
+/**
  * @file moving_median.cpp
  * @brief Smoothing using moving median(implementation)
  * @author Izadori
  */
+
 #include <algorithm>
 #include <set>
 
