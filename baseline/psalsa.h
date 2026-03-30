@@ -4,7 +4,7 @@
  * @author Izadori
  * @details
  * References:
- * @li Oller-Moreno S.; Pardo A.; Jiménez-Soto J. M.; Samitier J.; Marco S. "Adaptive Asymmetric Least Squares baseline estimation for analytical instruments" 2014 IEEE 11th International Multi-Conference on Systems, Signals & Devices (SSD14), Barcelona, Spain, 2014, pp. 1-5.
+ * @li Oller-Moreno, S.; Pardo, A.; Jiménez-Soto, J. M.; Samitier, J.; Marco, S. "Adaptive Asymmetric Least Squares baseline estimation for analytical instruments" 2014 IEEE 11th International Multi-Conference on Systems, Signals & Devices (SSD14), Barcelona, Spain, 2014, pp. 1-5.
  */
 
 #ifndef __SABLIB_PSALSA_H__
