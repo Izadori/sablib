@@ -22,6 +22,7 @@
 #include "baseline/asls.h"
 #include "baseline/airpls.h"
 #include "baseline/arpls.h"
+#include "baseline/psalsa.h"
 #include "baseline/beads.h"
 
 #endif // __SABLIB_H__

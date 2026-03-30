@@ -21,6 +21,7 @@ set(SABLIB_SOURCES
     baseline/imodpoly.cpp
     baseline/modpoly.cpp
     baseline/polynomial.cpp
+    baseline/psalsa.cpp
     baseline/sma.cpp
     baseline/snip.cpp
     baseline/spline.cpp
@@ -40,6 +41,7 @@ set(SABLIB_HEADERS
     baseline/imodpoly.h
     baseline/modpoly.h
     baseline/polynomial.h
+    baseline/psalsa.h
     baseline/sma.h
     baseline/snip.h
     baseline/spline.h
