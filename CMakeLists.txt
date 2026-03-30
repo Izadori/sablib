@@ -22,6 +22,7 @@ set(SABLIB_SOURCES
     baseline/modpoly.cpp
     baseline/polynomial.cpp
     baseline/sma.cpp
+    baseline/snip.cpp
     baseline/spline.cpp
     smoothing/moving_average.cpp
     smoothing/moving_median.cpp
@@ -40,6 +41,7 @@ set(SABLIB_HEADERS
     baseline/modpoly.h
     baseline/polynomial.h
     baseline/sma.h
+    baseline/snip.h
     baseline/spline.h
     misc/bspline.h
     misc/convolve.h

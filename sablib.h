@@ -14,6 +14,7 @@
 #include "smoothing/pspline.h"
 
 #include "baseline/sma.h"
+#include "baseline/snip.h"
 #include "baseline/polynomial.h"
 #include "baseline/spline.h"
 #include "baseline/modpoly.h"
