@@ -62,8 +62,7 @@ const std::vector<double> BaselineAsLS(
 		z = Whittaker(yy, w, lambdaDTD);
 		w = (yy.array() > z.array()).select(pv, npv);
 
-		if(((w.array() - w_old.array()).abs() < eps).all())
-		{
+		if(((w.array() - w_old.array()).abs() < eps).all()) {
 			break;
 		}
 
