@@ -33,15 +33,9 @@ const std::vector<double> BaselineModPoly(
 		throw std::invalid_argument("BaselineModPoly(): non-positive eps value is given.");
 	}
 
-	double max_index = y.size() - 1;
 	Eigen::VectorXd yy = Eigen::VectorXd::Map(y.data(), y.size());
-	Eigen::VectorXd xx(y.size());
-
-	for(unsigned int i = 0; i < y.size(); i++) {
-		xx(i) = i / max_index;
-	}
-
-	Eigen::MatrixXd V = Vandermonde(xx, polyorder);
+	Eigen::VectorXd x = Eigen::VectorXd::LinSpaced(y.size(), 0, 1);
+	Eigen::MatrixXd V = Vandermonde(x, polyorder);
 	Eigen::LDLT<Eigen::MatrixXd> ldltV = (V.transpose() * V).ldlt();
 	Eigen::VectorXd y_old = yy;
 
