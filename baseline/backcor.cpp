@@ -22,15 +22,33 @@ BaselineBackcor(
 	const double s, const double alpha, const unsigned int loop, const double eps
 )
 {
-	double max_index = (double)y.size() - 1;
-	Eigen::VectorXd yy = Eigen::VectorXd::Map(y.data(), y.size());
-	Eigen::VectorXd xx(y.size());
-
-	for(unsigned int i = 0; i < y.size(); i++) {
-		xx(i) = i / max_index;
+	if(y.size() == 0) {
+		throw std::invalid_argument("BaselineBackcor(): the length of y is zero.");
 	}
 
-	Eigen::MatrixXd V = Vandermonde(xx, polyorder);
+	if(polyorder == 0) {
+		throw std::invalid_argument("BaselineBackcor(): polyorder is zero.");
+	}
+
+	if(s <= 0) {
+		throw std::invalid_argument("BaselineBackcor(): non-positive s value is given.");
+	}
+
+	if(alpha <= 0 || 1 < alpha) {
+		throw std::invalid_argument("BaselineBackcor(): alpha must be between 0 and 1.");
+	}
+
+	if(loop == 0) {
+		throw std::invalid_argument("BaselineBackcor(): loop is zero.");
+	}
+
+	if(eps <= 0) {
+		throw std::invalid_argument("BaselineBackcor(): non-positive eps value is given.");
+	}
+
+	Eigen::VectorXd yy = Eigen::VectorXd::Map(y.data(), y.size());
+	Eigen::VectorXd x = Eigen::VectorXd::LinSpaced(y.size(), 0, 1);
+	Eigen::MatrixXd V = Vandermonde(x, polyorder);
 	Eigen::LDLT<Eigen::MatrixXd> ldltV = (V.transpose() * V).ldlt();
 
 	std::function<double(double)> derivative;
