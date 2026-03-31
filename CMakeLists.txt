@@ -17,6 +17,7 @@ set(SABLIB_SOURCES
     baseline/airpls.cpp
     baseline/arpls.cpp
     baseline/asls.cpp
+    baseline/backcor.cpp
     baseline/beads.cpp
     baseline/imodpoly.cpp
     baseline/modpoly.cpp
@@ -37,6 +38,7 @@ set(SABLIB_HEADERS
     baseline/airpls.h
     baseline/arpls.h
     baseline/asls.h
+    baseline/backcor.h
     baseline/beads.h
     baseline/imodpoly.h
     baseline/modpoly.h
