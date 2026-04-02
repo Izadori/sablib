@@ -55,6 +55,7 @@ const std::vector<double> BaselineIModPoly(
 		double sd = std::sqrt((r.array() - mean).square().sum() / r.size());
 
 		if(std::fabs(sd - sd_old) < eps) {
+			y_old = y_new;
 			break;
 		}
 
