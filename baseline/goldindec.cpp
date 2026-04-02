@@ -14,6 +14,9 @@
 
 namespace sablib {
 
+//
+// Implementation of BaselineGoldindec() function
+//
 const std::vector<double>
 BaselineGoldindec(
 	const std::vector<double> & y, const unsigned int polyorder,
