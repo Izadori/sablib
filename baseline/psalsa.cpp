@@ -78,7 +78,6 @@ const std::vector<double> BaselinePsalsa(
 	}
 
 	std::vector<double> result(z.size());
-
 	Eigen::VectorXd::Map(result.data(), result.size()) = z;
 
 	return result;
