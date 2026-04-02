@@ -44,18 +44,17 @@ const std::vector<double> BaselineIModPoly(
 	Eigen::VectorXd x = Eigen::VectorXd::LinSpaced(y.size(), 0, 1);
 	Eigen::MatrixXd V = Vandermonde(x, polyorder);
 	Eigen::LDLT<Eigen::MatrixXd> ldltV = (V.transpose() * V).ldlt();
-	Eigen::VectorXd y_old = yy;
+	Eigen::VectorXd y_old = yy, y_new;
 	double sd_old = std::numeric_limits<double>::infinity();
 
 	for(unsigned int i = 0; i < loop; i++) {
-		Eigen::VectorXd y_new = PolyVal(ldltV.solve(V.transpose() * y_old), V);
+		y_new = PolyVal(ldltV.solve(V.transpose() * y_old), V);
 
 		Eigen::VectorXd r = y_new - y_old;
 		double mean = r.mean();
 		double sd = std::sqrt((r.array() - mean).square().sum() / r.size());
 
 		if(std::fabs(sd - sd_old) < eps) {
-			y_old = y_new;
 			break;
 		}
 
@@ -64,7 +63,7 @@ const std::vector<double> BaselineIModPoly(
 	}
 
 	std::vector<double> result(y.size());
-	Eigen::VectorXd::Map(result.data(), result.size()) = y_old;
+	Eigen::VectorXd::Map(result.data(), result.size()) = y_new;
 
 	return result;
 }
