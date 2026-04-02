@@ -125,6 +125,7 @@ BaselineBackcor(
 	Eigen::VectorXd coeff = ldltV.solve(V.transpose() * yy);
 	Eigen::VectorXd z = PolyVal(coeff, V);
 
+	// LEGEND algorithm
 	for(unsigned int i = 0; i < loop; i++) {
 		Eigen::VectorXd z_old = z;
 		Eigen::VectorXd e = yy - z_old;

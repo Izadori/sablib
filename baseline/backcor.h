@@ -42,7 +42,7 @@ enum class BackcorFunc
  * @param polyorder The order of the polynomial to be fitted.
  * @param func The type of cost function to use (default: ATQuad).
  * @param s Threshold parameter for the cost function (default: 1.0).
- * @param alpha Control parameter for the iterative update (default: 0.99). Should be in range [0, 1].
+ * @param alpha Control parameter for the iterative update (default: 0.99 * 0.5). Should be in range [0, 1].
  * @param loop The maximum number of iterations (default: 50).
  * @param eps Convergence threshold for the relative change in the estimated baseline (default: 1.0e-3).
  * @return A vector of the same size as y containing the estimated baseline.
@@ -51,7 +51,7 @@ enum class BackcorFunc
 const std::vector<double>
 BaselineBackcor(
 	const std::vector<double> & y, const unsigned int polyorder, const BackcorFunc func = BackcorFunc::ATQuad,
-	const double s = 1, const double alpha = 0.99, const unsigned int loop = 50, const double eps = 1.0e-3
+	const double s = 1, const double alpha = 0.99 * 0.5, const unsigned int loop = 50, const double eps = 1.0e-3
 );
 
 }; // namespace sablib
