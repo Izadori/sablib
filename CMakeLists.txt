@@ -19,6 +19,7 @@ set(SABLIB_SOURCES
     baseline/asls.cpp
     baseline/backcor.cpp
     baseline/beads.cpp
+    baseline/goldindec.cpp
     baseline/imodpoly.cpp
     baseline/modpoly.cpp
     baseline/polynomial.cpp
@@ -40,6 +41,7 @@ set(SABLIB_HEADERS
     baseline/asls.h
     baseline/backcor.h
     baseline/beads.h
+    baseline/goldindec.h
     baseline/imodpoly.h
     baseline/modpoly.h
     baseline/polynomial.h
