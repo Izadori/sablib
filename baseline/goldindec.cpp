@@ -48,6 +48,18 @@ BaselineGoldindec(
 		throw std::invalid_argument("BaselineGoldindec(): non-positive eps value is given.");
 	}
 
+	if(loop_legend == 0) {
+		throw std::invalid_argument("BaselineGoldindec(): loop_legend is zero.");
+	}
+
+	if(eps_legend <= 0) {
+		throw std::invalid_argument("BaselineGoldindec(): non-positive eps_legend value is given.");
+	}
+
+	if(eps_s <= 0) {
+		throw std::invalid_argument("BaselineGoldindec(): non-positive eps_s value is given.");
+	}
+
 	Eigen::VectorXd yy = Eigen::VectorXd::Map(y.data(), y.size());
 	Eigen::VectorXd x = Eigen::VectorXd::LinSpaced(y.size(), 0, 1);
 	Eigen::MatrixXd V = Vandermonde(x, polyorder);
