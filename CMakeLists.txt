@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Eigen3
-find_package(Eigen3 REQUIRED NO_MODULE)
+find_package(Eigen3 CONFIG REQUIRED)
 
 # Source files
 set(SABLIB_SOURCES
@@ -66,7 +66,7 @@ add_library(sablib ${SABLIB_SOURCES} ${SABLIB_HEADERS})
 # Public include directories
 target_include_directories(sablib PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    $<INSTALL_INTERFACE:include>
+    $<INSTALL_INTERFACE:include/sablib>
 )
 
 # Link Eigen3
@@ -80,14 +80,12 @@ install(TARGETS sablib
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
 # Install headers (preserving folder structure)
-foreach(header ${SABLIB_HEADERS})
-    get_filename_component(header_dir ${header} DIRECTORY)
-    install(FILES ${header} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/sablib/${header_dir}")
-endforeach()
+install(DIRECTORY baseline smoothing misc
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sablib
+)
 
 # Install main header
 install(FILES sablib.h DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/sablib")
@@ -112,6 +110,11 @@ write_basic_package_version_file(
     "${CMAKE_CURRENT_BINARY_DIR}/sablibConfigVersion.cmake"
     VERSION ${PROJECT_VERSION}
     COMPATIBILITY SameMajorVersion
+)
+
+set_target_properties(sablib PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
 )
 
 # Install config files

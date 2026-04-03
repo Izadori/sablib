@@ -1,7 +1,7 @@
 {
   "name": "sablib",
-  "version": "0.3.0",
-  "description": "A C++ library for signal smoothing and baseline estimation, powered by Eigen.",
+  "version-string": "0.3.0",
+  "description": "Signal smoothing and baseline estimation library for C++.",
   "homepage": "https://github.com/Izadori/sablib",
   "license": "MIT",
   "dependencies": ["eigen3"]
