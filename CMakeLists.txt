@@ -61,7 +61,7 @@ set(SABLIB_HEADERS
 )
 
 # Define the library
-add_library(sablib ${SABLIB_SOURCES} ${SABLIB_HEADERS})
+add_library(sablib STATIC ${SABLIB_SOURCES} ${SABLIB_HEADERS})
 
 # Public include directories
 target_include_directories(sablib PUBLIC
