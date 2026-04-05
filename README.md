@@ -17,7 +17,7 @@ A C++ library for signal smoothing and baseline estimation, powered by Eigen.
 - **AsLS**: Asymmetric Least Squares.
 - **airPLS**: Adaptive Iteratively Reweighted Penalized Least Squares.
 - **arPLS**: Asymmetrically Reweighted Penalized Least Squares.
-- **psalsa**: Peaked Signal’s Asymmetric Least Squares Algorithm.
+- **psalsa**: Peaked Signal's Asymmetric Least Squares Algorithm.
 - **BEADS**: Baseline Estimation And Denoising using Sparsity.
 
 ### Smoothing
@@ -36,7 +36,53 @@ A C++ library for signal smoothing and baseline estimation, powered by Eigen.
 
 ## Installation & Build
 
-`sablib` is designed to be built as a static library using CMake.
+### Using vcpkg
+
+`sablib` provides a vcpkg port. First, clone this repository:
+
+```bash
+git clone https://github.com/Izadori/sablib
+```
+
+Then install with the `--overlay-ports` option:
+
+```bash
+vcpkg install sablib --overlay-ports=<path/to/sablib>/vcpkg/ports
+```
+
+In your `CMakeLists.txt`:
+
+```cmake
+find_package(sablib CONFIG REQUIRED)
+target_link_libraries(my_app PRIVATE sablib::sablib)
+```
+
+### Using Conan
+
+`sablib` provides a Conan recipe. First, clone this repository:
+
+```bash
+git clone https://github.com/Izadori/sablib
+```
+
+Then install and build:
+
+```bash
+cd sablib
+conan install conan/sablib --output-folder=conan/build --build=missing
+conan build conan/sablib --output-folder=conan/build
+```
+
+In your `CMakeLists.txt`:
+
+```cmake
+find_package(sablib CONFIG REQUIRED)
+target_link_libraries(my_app PRIVATE sablib::sablib)
+```
+
+### Building manually
+
+`sablib` can also be built as a static library using CMake directly:
 
 ```bash
 mkdir build
@@ -50,6 +96,26 @@ If Eigen3 is not found, please try `cmake .. -DCMAKE_PREFIX_PATH="path/to/Eigen3
 ## Usage
 
 ### Integrating with CMake
+
+#### Via vcpkg
+
+After installing with vcpkg, use `find_package` with the vcpkg toolchain:
+
+```cmake
+find_package(sablib CONFIG REQUIRED)
+target_link_libraries(my_app PRIVATE sablib::sablib)
+```
+
+#### Via Conan
+
+After installing with Conan, use `find_package` with the Conan toolchain:
+
+```cmake
+find_package(sablib CONFIG REQUIRED)
+target_link_libraries(my_app PRIVATE sablib::sablib)
+```
+
+#### Manually
 
 You can add `sablib` to your project as follows:
 
