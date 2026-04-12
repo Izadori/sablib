@@ -15,7 +15,7 @@ namespace sablib {
 //
 // Implementation of BaselineArPLS() function
 //
-const std::vector<double> BaselineArPLS(
+const BaselineResult BaselineArPLS(
 	std::vector<double> & y, const double lambda, const unsigned int s,
 	const unsigned int loop, const double eps
 )
@@ -84,8 +84,12 @@ const std::vector<double> BaselineArPLS(
 		w = wt;
 	}
 
-	std::vector<double> result(z.size());
-	Eigen::VectorXd::Map(result.data(), result.size()) = z;
+	BaselineResult result;
+	result.baseline.resize(z.size());
+	result.corrected.resize(z.size());
+
+	Eigen::VectorXd::Map(result.baseline.data(), z.size()) = z;
+	Eigen::VectorXd::Map(result.corrected.data(), z.size()) = yy - z;
 
 	return result;
 }

@@ -11,7 +11,8 @@
 #define __SABLIB_IMODPOLY_H__
 
 #include <stdexcept>
-#include <vector>
+
+#include "result_type.h"
 
 namespace sablib {
 
@@ -23,10 +24,10 @@ namespace sablib {
  * @param k Scaling factor for the standard deviation threshold (default is 1.0).
  * @param loop The maximum number of iterations (default is 50).
  * @param eps The convergence tolerance based on the standard deviation change (default is 1.0e-3).
- * @return A vector containing the estimated baseline.
+ * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const std::vector<double> BaselineIModPoly(
+const BaselineResult BaselineIModPoly(
 	const std::vector<double> & y, const unsigned int polyorder, const double k = 1,
 	const unsigned int loop = 50, const double eps = 1.0e-3
 );

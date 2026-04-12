@@ -13,7 +13,7 @@ namespace sablib {
 //
 // Implementation of BaselineSpline() function
 //
-const std::vector<double> BaselineSpline(const std::vector<double> & y, const std::vector<unsigned int> & indices)
+const BaselineResult BaselineSpline(const std::vector<double> & y, const std::vector<unsigned int> & indices)
 {
 	if(y.size() == 0 || indices.size() == 0) {
 		throw std::invalid_argument("BaselineSpline(): the length of y or indices is zero.");
@@ -32,10 +32,17 @@ const std::vector<double> BaselineSpline(const std::vector<double> & y, const st
 	}
 
 	CubicSpline spline(xx, yy);
-	std::vector<double> result = y;
+	BaselineResult result;
+	result.baseline.resize(y.size());
+	result.corrected.resize(y.size());
+	result.baseline = y;
 
 	for(unsigned int i = indices[0]; i < indices.back(); i++) {
-		result[i] = spline.Interpolate(i / max_index);
+		result.baseline[i] = spline.Interpolate(i / max_index);
+	}
+
+	for(unsigned int i = 0; i < y.size(); i++) {
+	    result.corrected[i] = y[i] - result.baseline[i];
 	}
 
 	return result;

@@ -39,6 +39,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <algorithm>
 #include <cmath>
 #include <functional>
+#include <tuple>
 
 #include "../misc/convolve.h"
 #include "../misc/diff.h"
@@ -97,7 +98,7 @@ BAfilt(const unsigned int d, const double frequency, const unsigned int length)
 //
 // Implementation of BaselineBeads() function
 //
-const std::tuple< std::vector<double>, std::vector<double> >
+const BaselineResult
 BaselineBeads(
 	const std::vector<double> & y, const unsigned int s, const double frequency, const double r,
 	const double lambda0, const double lambda1, const double lambda2,
@@ -243,12 +244,14 @@ BaselineBeads(
 	Eigen::VectorXd f = yy - x;
 	f = (f - B * solverA.solve(f)).eval();
 
-	std::vector<double> f_result(f.size()), x_result(x.size());
+	BaselineResult result;
+	result.baseline.resize(x.size());
+	result.corrected.resize(f.size());
 
-	Eigen::VectorXd::Map(f_result.data(), f.size()) = f;
-	Eigen::VectorXd::Map(x_result.data(), x.size()) = x;
+	Eigen::VectorXd::Map(result.baseline.data(), x.size()) = x;
+	Eigen::VectorXd::Map(result.corrected.data(), f.size()) = f;
 
-	return std::tuple< std::vector<double>, std::vector<double> >(f_result, x_result);
+	return result;
 }
 
 //

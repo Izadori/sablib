@@ -13,7 +13,7 @@ namespace sablib {
 //
 // Implementation of BaselineLinear() function
 //
-std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int index1, const unsigned int index2)
+const BaselineResult BaselineLinear(std::vector<double> & y, const unsigned int index1, const unsigned int index2)
 {
 	if(y.size() == 0) {
 		throw std::invalid_argument("BaselineLinear(): the length of y is zero.");
@@ -23,7 +23,10 @@ std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int i
 		throw std::invalid_argument("BaselineLinear(): illegal indices");
 	}
 
-	std::vector<double> result = y;
+	BaselineResult result;
+	result.baseline = y;
+	result.corrected = y;
+
 	double m = (y[index2] - y[index1]) / (index2 - index1);
 
 	auto f = [&](const unsigned int x) {
@@ -31,7 +34,11 @@ std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int i
 	};
 
 	for(unsigned int x = index1; x <= index2; x++) {
-		result[x] = f(x);
+		result.baseline[x] = f(x);
+	}
+
+	for(unsigned int i = 0; i < y.size(); i++) {
+	    result.corrected[i] = y[i] - result.baseline[i];
 	}
 
 	return result;
@@ -40,7 +47,7 @@ std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int i
 //
 // Implementation of BaselinePolynomial() function
 //
-std::vector<double> BaselinePolynomial(
+const BaselineResult BaselinePolynomial(
 	std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices
 )
 {
@@ -69,7 +76,9 @@ std::vector<double> BaselinePolynomial(
 
 	Eigen::VectorXd coefficients = PolyFit(xx, yy, polyorder);
 
-	std::vector<double> result = y;
+	BaselineResult result;
+	result.baseline = y;
+	result.corrected = y;
 
 	for(unsigned int i = sorted_indices[0]; i < sorted_indices.back(); i++) {
 		double x = i / max_index;
@@ -81,7 +90,11 @@ std::vector<double> BaselinePolynomial(
 			k *= x;
 		}
 
-		result[i] = fx;
+		result.baseline[i] = fx;
+	}
+
+	for(unsigned int i = 0; i < y.size(); i++) {
+	    result.corrected[i] = y[i] - result.baseline[i];
 	}
 
 	return result;

@@ -15,7 +15,7 @@ namespace sablib {
 //
 // Implementation of BaselineAirPLS() function
 //
-const std::vector<double> BaselineAirPLS(
+const BaselineResult BaselineAirPLS(
 	std::vector<double> & y, const double lambda, const unsigned int s,
 	const unsigned int loop, const double eps
 )
@@ -69,8 +69,12 @@ const std::vector<double> BaselineAirPLS(
 		w(0) = w(w.size() - 1) = std::exp((loop * d.maxCoeff() / d_sum_abs));
 	}
 
-	std::vector<double> result(z.size());
-	Eigen::VectorXd::Map(result.data(), result.size()) = z;
+	BaselineResult result;
+	result.baseline.resize(z.size());
+	result.corrected.resize(z.size());
+
+	Eigen::VectorXd::Map(result.baseline.data(), z.size()) = z;
+	Eigen::VectorXd::Map(result.corrected.data(), z.size()) = yy - z;
 
 	return result;
 }

@@ -11,7 +11,8 @@
 #define __SABLIB_ARPLS_H__
 
 #include <stdexcept>
-#include <vector>
+
+#include "result_type.h"
 
 namespace sablib {
 
@@ -23,10 +24,10 @@ namespace sablib {
  * @param s The order of the difference (usually s = 1, 2, or 3).
  * @param loop Maximum number of iterations.
  * @param eps Convergence threshold.
- * @return The estimated baseline.
+ * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const std::vector<double> BaselineArPLS(
+const BaselineResult BaselineArPLS(
 	std::vector<double> & y, const double lambda, const unsigned int s = 2,
 	const unsigned int loop = 50, const double eps = 1e-3
 );

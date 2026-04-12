@@ -13,7 +13,7 @@ namespace sablib {
 //
 // Implementation of BaselineModPoly() function
 //
-const std::vector<double> BaselineModPoly(
+const BaselineResult BaselineModPoly(
 	const std::vector<double> & y, const unsigned int polyorder, const unsigned int loop, const double eps
 )
 {
@@ -49,8 +49,12 @@ const std::vector<double> BaselineModPoly(
 		y_old = (y_new.array() > y_old.array()).select(y_old, y_new);
 	}
 
-	std::vector<double> result(y.size());
-	Eigen::VectorXd::Map(result.data(), result.size()) = y_old;
+	BaselineResult result;
+	result.baseline.resize(y_old.size());
+	result.corrected.resize(y_old.size());
+
+	Eigen::VectorXd::Map(result.baseline.data(), y_old.size()) = y_old;
+	Eigen::VectorXd::Map(result.corrected.data(), y_old.size()) = yy - y_old;
 
 	return result;
 }

@@ -9,7 +9,8 @@
  */
 
 #include <stdexcept>
-#include <vector>
+
+#include "result_type.h"
 
 #ifndef __SABLIB_SNIP_H__
 #define __SABLIB_SNIP_H__
@@ -37,10 +38,10 @@ enum class SnipPreprocess
  * @param decreasing If true, iterates from m down to 1 (recommended). If false, iterates from 1 up to m.
  * @param preprocess The preprocessing transformation to apply before clipping (None, LL, or LLS).
  * @param loop The number of times to repeat the entire SNIP process (usually 1 is sufficient).
- * @return A vector of the estimated baseline.
+ * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const std::vector<double>
+const BaselineResult
 BaselineSnip(
 	const std::vector<double> & y, const unsigned int m, const bool decreasing = true,
 	const SnipPreprocess preprocess = SnipPreprocess::None, const unsigned int loop = 1

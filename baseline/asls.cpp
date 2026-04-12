@@ -13,7 +13,7 @@ namespace sablib {
 //
 // Implementation of BaselineAsLS() function
 //
-const std::vector<double> BaselineAsLS(
+const BaselineResult BaselineAsLS(
 	std::vector<double> & y, const double lambda, const double p, const unsigned int s,
 	const unsigned int loop, const double eps
 )
@@ -69,8 +69,12 @@ const std::vector<double> BaselineAsLS(
 		w_old = w;
 	}
 
-	std::vector<double> result(z.size());
-	Eigen::VectorXd::Map(result.data(), result.size()) = z;
+	BaselineResult result;
+	result.baseline.resize(z.size());
+	result.corrected.resize(z.size());
+
+	Eigen::VectorXd::Map(result.baseline.data(), z.size()) = z;
+	Eigen::VectorXd::Map(result.corrected.data(), z.size()) = yy - z;
 
 	return result;
 }

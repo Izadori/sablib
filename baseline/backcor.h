@@ -12,7 +12,8 @@
 #define __SABLIB_BACKCOR_H__
 
 #include <stdexcept>
-#include <vector>
+
+#include "result_type.h"
 
 namespace sablib {
 
@@ -45,10 +46,10 @@ enum class BackcorFunc
  * @param alpha Control parameter for the iterative update (default: 0.99 * 0.5). Should be in range [0, 1].
  * @param loop The maximum number of iterations (default: 50).
  * @param eps Convergence threshold for the relative change in the estimated baseline (default: 1.0e-3).
- * @return A vector of the same size as y containing the estimated baseline.
+ * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const std::vector<double>
+const BaselineResult
 BaselineBackcor(
 	const std::vector<double> & y, const unsigned int polyorder, const BackcorFunc func = BackcorFunc::ATQuad,
 	const double s = 1, const double alpha = 0.99 * 0.5, const unsigned int loop = 50, const double eps = 1.0e-3

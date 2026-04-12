@@ -13,7 +13,7 @@
 
 namespace sablib {
 
-const std::vector<double>
+const BaselineResult
 BaselineSnip(
 	const std::vector<double> & y, const unsigned int m, const bool decreasing,
 	const SnipPreprocess preprocess, const unsigned int loop
@@ -76,18 +76,20 @@ BaselineSnip(
 		}
 	}
 
-	std::vector<double> result(v.size());
+	BaselineResult result;
+	result.baseline.resize(yy.size());
+	result.corrected.resize(yy.size());
 
 	switch(preprocess) {
 	case SnipPreprocess::LL:
-		Eigen::VectorXd::Map(result.data(), result.size()) = v.unaryExpr(
+		Eigen::VectorXd::Map(result.baseline.data(), result.baseline.size()) = v.unaryExpr(
 			[](const double x) {
 				return std::exp(std::exp(x) - 1) - 1;
 			}
 		);
 		break;
 	case SnipPreprocess::LLS:
-		Eigen::VectorXd::Map(result.data(), result.size()) = v.unaryExpr(
+	    Eigen::VectorXd::Map(result.baseline.data(), result.baseline.size()) = v.unaryExpr(
 			[](const double x) {
 				double t = std::exp(std::exp(x) - 1) - 1;
 				return t * t  - 1;
@@ -95,7 +97,11 @@ BaselineSnip(
 		);
 		break;
 	default:
-		Eigen::VectorXd::Map(result.data(), result.size()) = v;
+		Eigen::VectorXd::Map(result.baseline.data(), result.baseline.size()) = v;
+	}
+
+	for(unsigned int i = 0; i < result.baseline.size(); i++) {
+	    result.corrected[i] = y[i] - result.baseline[i];
 	}
 
 	return result;

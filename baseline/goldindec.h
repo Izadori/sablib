@@ -11,7 +11,8 @@
 #define __SABLIB_GOLDINDEC_H__
 
 #include <stdexcept>
-#include <vector>
+
+#include "result_type.h"
 
 namespace sablib {
 
@@ -27,10 +28,10 @@ namespace sablib {
  * @param loop_legend Maximum number of iterations for internal LEGEND algorithm (default: 50).
  * @param eps_legend Convergence threshold for internal LEGEND algorithm (default: 1e-3).
  * @param eps_s Convergence threshold for the internal parameter s (default: 1e-4).
- * @return A vector of the same size as y containing the estimated baseline.
+ * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const std::vector<double>
+const BaselineResult
 BaselineGoldindec(
 	const std::vector<double> & y, const unsigned int polyorder, const double peak_ratio = 0.5,
 	const double alpha = 0.99 * 0.5, const unsigned int loop = 100, const double eps = 1.0e-4,

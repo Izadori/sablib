@@ -17,7 +17,7 @@ namespace sablib {
 //
 // Implementation of BaselineGoldindec() function
 //
-const std::vector<double>
+const BaselineResult
 BaselineGoldindec(
 	const std::vector<double> & y, const unsigned int polyorder,
 	double peak_ratio, const double alpha, const unsigned int loop, const double eps,
@@ -123,8 +123,12 @@ BaselineGoldindec(
 		s_old = s;
 	}
 
-	std::vector<double> result(z.size());
-	Eigen::VectorXd::Map(result.data(), result.size()) = z;
+	BaselineResult result;
+	result.baseline.resize(z.size());
+	result.corrected.resize(z.size());
+
+	Eigen::VectorXd::Map(result.baseline.data(), z.size()) = z;
+	Eigen::VectorXd::Map(result.corrected.data(), z.size()) = yy - z;
 
 	return result;
 }

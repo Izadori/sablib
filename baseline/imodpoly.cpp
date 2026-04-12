@@ -16,7 +16,7 @@ namespace sablib {
 //
 // Implementation of BaselineIModPoly() function
 //
-const std::vector<double> BaselineIModPoly(
+const BaselineResult BaselineIModPoly(
 	const std::vector<double> & y, const unsigned int polyorder, const double k, const unsigned int loop, const double eps
 )
 {
@@ -62,8 +62,12 @@ const std::vector<double> BaselineIModPoly(
 		sd_old = sd;
 	}
 
-	std::vector<double> result(y.size());
-	Eigen::VectorXd::Map(result.data(), result.size()) = y_new;
+	BaselineResult result;
+	result.baseline.resize(y_new.size());
+	result.corrected.resize(y_new.size());
+
+	Eigen::VectorXd::Map(result.baseline.data(), y_new.size()) = y_new;
+	Eigen::VectorXd::Map(result.corrected.data(), y_new.size()) = yy - y_new;
 
 	return result;
 }

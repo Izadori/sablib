@@ -8,7 +8,8 @@
 #define __SABLIB_POLYNOMIAL_H__
 
 #include <stdexcept>
-#include <vector>
+
+#include "result_type.h"
 
 namespace sablib {
 
@@ -18,10 +19,10 @@ namespace sablib {
  * @param y The input data for baseline estimation.
  * @param index1 The index of the first point.
  * @param index2 The index of the second point.
- * @return The estimated linear baseline.
+ * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int index1, const unsigned int index2);
+const BaselineResult BaselineLinear(std::vector<double> & y, const unsigned int index1, const unsigned int index2);
 
 /**
  * @brief Performs baseline estimation by fitting a polynomial to specified points.
@@ -29,10 +30,10 @@ std::vector<double> BaselineLinear(std::vector<double> & y, const unsigned int i
  * @param y The input data for baseline estimation.
  * @param polyorder The order of the polynomial to fit.
  * @param indices The indices of the points used for polynomial fitting.
- * @return The estimated polynomial baseline.
+ * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-std::vector<double> BaselinePolynomial(
+const BaselineResult BaselinePolynomial(
 	std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices
 );
 

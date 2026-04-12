@@ -10,8 +10,8 @@
  */
 
 #include <stdexcept>
-#include <tuple>
-#include <vector>
+
+#include "result_type.h"
 
 #ifndef __SABLIB_BEADS_H__
 #define __SABLIB_BEADS_H__
@@ -40,10 +40,10 @@ enum class BeadsPenalty
  * @param loop Maximum number of iterations.
  * @param eps Convergence threshold.
  * @param penalty Penalty type (L1_v1 or L1_v2).
- * @return A tuple containing (baseline, denoised signal).
+ * @return The estimated baseline and denoised baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const std::tuple< std::vector<double>, std::vector<double> >
+const BaselineResult
 BaselineBeads(
 	const std::vector<double> & y, const unsigned int s, const double frequency, const double r,
 	const double lambda0, const double lambda1, const double lambda2, const unsigned int loop = 30,

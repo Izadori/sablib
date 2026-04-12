@@ -7,7 +7,7 @@
 #ifndef __SABLIB_SMA_H__
 #define __SABLIB_SMA_H__
 
-#include <vector>
+#include "result_type.h"
 
 namespace sablib {
 
@@ -17,9 +17,9 @@ namespace sablib {
  * @param y The input data for baseline estimation.
  * @param n Half-width of the moving average window (calculated using `2 * n + 1` points).
  * @param loop Number of iterations (default is 50).
- * @return The estimated baseline.
+ * @return The estimated baseline and baseline-corrected data.
  */
-const std::vector<double> BaselineSMA(std::vector<double> & y, const unsigned int n, const unsigned int loop = 50);
+const BaselineResult BaselineSMA(std::vector<double> & y, const unsigned int n, const unsigned int loop = 50);
 
 }; // namespace sablib
 
