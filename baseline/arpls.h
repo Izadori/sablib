@@ -28,7 +28,7 @@ namespace sablib {
  * @exception std::invalid_argument One or more parameters are wrong.
  */
 const BaselineResult BaselineArPLS(
-	std::vector<double> & y, const double lambda, const unsigned int s = 2,
+	const std::vector<double> & y, const double lambda, const unsigned int s = 2,
 	const unsigned int loop = 50, const double eps = 1e-3
 );
 

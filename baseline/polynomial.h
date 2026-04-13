@@ -22,7 +22,7 @@ namespace sablib {
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult BaselineLinear(std::vector<double> & y, const unsigned int index1, const unsigned int index2);
+const BaselineResult BaselineLinear(const std::vector<double> & y, const unsigned int index1, const unsigned int index2);
 
 /**
  * @brief Performs baseline estimation by fitting a polynomial to specified points.
@@ -34,7 +34,7 @@ const BaselineResult BaselineLinear(std::vector<double> & y, const unsigned int 
  * @exception std::invalid_argument One or more parameters are wrong.
  */
 const BaselineResult BaselinePolynomial(
-	std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices
+	const std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices
 );
 
 }; // namespace sablib

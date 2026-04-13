@@ -13,7 +13,7 @@ namespace sablib {
 //
 // Implementation of BaselineLinear() function
 //
-const BaselineResult BaselineLinear(std::vector<double> & y, const unsigned int index1, const unsigned int index2)
+const BaselineResult BaselineLinear(const std::vector<double> & y, const unsigned int index1, const unsigned int index2)
 {
 	if(y.size() == 0) {
 		throw std::invalid_argument("BaselineLinear(): the length of y is zero.");
@@ -48,7 +48,7 @@ const BaselineResult BaselineLinear(std::vector<double> & y, const unsigned int 
 // Implementation of BaselinePolynomial() function
 //
 const BaselineResult BaselinePolynomial(
-	std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices
+	const std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices
 )
 {
 	if(y.size() == 0 || indices.size() == 0) {

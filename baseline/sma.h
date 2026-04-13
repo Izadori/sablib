@@ -19,7 +19,7 @@ namespace sablib {
  * @param loop Number of iterations (default is 50).
  * @return The estimated baseline and baseline-corrected data.
  */
-const BaselineResult BaselineSMA(std::vector<double> & y, const unsigned int n, const unsigned int loop = 50);
+const BaselineResult BaselineSMA(const std::vector<double> & y, const unsigned int n, const unsigned int loop = 50);
 
 }; // namespace sablib
 

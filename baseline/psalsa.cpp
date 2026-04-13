@@ -14,7 +14,7 @@ namespace sablib {
 // Implementation of BaselinePsalsa() function
 //
 const BaselineResult BaselinePsalsa(
-	std::vector<double> & y, const double lambda, const double p, const double k,
+	const std::vector<double> & y, const double lambda, const double p, const double k,
 	const unsigned int s, const unsigned int loop, const double eps
 )
 {

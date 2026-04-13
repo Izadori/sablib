@@ -30,7 +30,7 @@ namespace sablib {
  * @exception std::invalid_argument One or more parameters are wrong.
  */
 const BaselineResult BaselineAsLS(
-	std::vector<double> & y, const double lambda, const double p, const unsigned int s = 2,
+	const std::vector<double> & y, const double lambda, const double p, const unsigned int s = 2,
 	const unsigned int loop = 10, const double eps = 1e-3
 );
 

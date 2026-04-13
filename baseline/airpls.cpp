@@ -16,7 +16,7 @@ namespace sablib {
 // Implementation of BaselineAirPLS() function
 //
 const BaselineResult BaselineAirPLS(
-	std::vector<double> & y, const double lambda, const unsigned int s,
+	const std::vector<double> & y, const double lambda, const unsigned int s,
 	const unsigned int loop, const double eps
 )
 {

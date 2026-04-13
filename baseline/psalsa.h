@@ -30,7 +30,7 @@ namespace sablib {
  * @exception std::invalid_argument One or more parameters are wrong.
  */
 const BaselineResult BaselinePsalsa(
-	std::vector<double> & y, const double lambda, const double p, const double k,
+	const std::vector<double> & y, const double lambda, const double p, const double k,
 	const unsigned int s = 2, const unsigned int loop = 10, const double eps = 1e-3
 );
 

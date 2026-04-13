@@ -13,7 +13,7 @@ namespace sablib {
 //
 // Implementation of BaselineSMA() function
 //
-const BaselineResult BaselineSMA(std::vector<double> & y, const unsigned int n, const unsigned int loop)
+const BaselineResult BaselineSMA(const std::vector<double> & y, const unsigned int n, const unsigned int loop)
 {
 	Eigen::VectorXd yy = Eigen::VectorXd::Map(y.data(), y.size());
 	Eigen::VectorXd result = yy;
