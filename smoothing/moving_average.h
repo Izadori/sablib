@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "../misc/expand.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -22,7 +23,7 @@ namespace sablib {
  * @param w Weights.
  * @return The data after applying the moving average.
  */
-const std::vector<double> WeightedMovingAverage(const std::vector<double> & y, const std::vector<double> & w);
+SABLIB_EXPORT const std::vector<double> WeightedMovingAverage(const std::vector<double> & y, const std::vector<double> & w);
 
 /**
  * @brief Calculates the weighted moving average of the input signal.
@@ -73,7 +74,7 @@ const typename Derived::PlainObject WeightedMovingAverage(
  * @param n Half-width of the moving average window (calculated using `2 * n + 1` points).
  * @return The data after applying the moving average.
  */
-const std::vector<double> MovingAverage(const std::vector<double> & y, const unsigned int n);
+SABLIB_EXPORT const std::vector<double> MovingAverage(const std::vector<double> & y, const unsigned int n);
 
 /**
  * @brief Calculates the simple moving average of the input signal.
@@ -106,7 +107,7 @@ const typename Derived::PlainObject MovingAverage(const Eigen::MatrixBase<Derive
  * @return A vector containing the Gaussian kernel coefficients.
  * @exception std::invalid_argument If n is zero or sigma is non-positive.
  */
-const std::vector<double> GaussianKernel(const unsigned int n, const double sigma);
+SABLIB_EXPORT const std::vector<double> GaussianKernel(const unsigned int n, const double sigma);
 
 /**
  * @brief Performs Gaussian smoothing on the input signal.

@@ -8,6 +8,7 @@
 #define __SABLIB_SMA_H__
 
 #include "result_type.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -19,7 +20,7 @@ namespace sablib {
  * @param loop Number of iterations (default is 50).
  * @return The estimated baseline and baseline-corrected data.
  */
-const BaselineResult BaselineSMA(const std::vector<double> & y, const unsigned int n, const unsigned int loop = 50);
+SABLIB_EXPORT const BaselineResult BaselineSMA(const std::vector<double> & y, const unsigned int n, const unsigned int loop = 50);
 
 }; // namespace sablib
 

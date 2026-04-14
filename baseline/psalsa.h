@@ -13,6 +13,7 @@
 #include <stdexcept>
 
 #include "result_type.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -29,7 +30,7 @@ namespace sablib {
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult BaselinePsalsa(
+SABLIB_EXPORT const BaselineResult BaselinePsalsa(
 	const std::vector<double> & y, const double lambda, const double p, const double k,
 	const unsigned int s = 2, const unsigned int loop = 10, const double eps = 1e-3
 );

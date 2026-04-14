@@ -14,6 +14,7 @@
 #include <stdexcept>
 
 #include "result_type.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -49,7 +50,7 @@ enum class BackcorFunc
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult
+SABLIB_EXPORT const BaselineResult
 BaselineBackcor(
 	const std::vector<double> & y, const unsigned int polyorder, const BackcorFunc func = BackcorFunc::ATQuad,
 	const double s = 1, const double alpha = 0.99 * 0.5, const unsigned int loop = 50, const double eps = 1.0e-3

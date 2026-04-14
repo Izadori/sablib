@@ -10,6 +10,8 @@
 #include <stdexcept>
 #include <vector>
 
+#include "sablib_export.h"
+
 namespace sablib {
 
 /**
@@ -20,7 +22,7 @@ namespace sablib {
  * @return The data after applying the moving median.
  * @exception std::invalid_argument If the size of y or n is zero.
  */
-const std::vector<double> MovingMedian(const std::vector<double> & y, const unsigned int n);
+SABLIB_EXPORT const std::vector<double> MovingMedian(const std::vector<double> & y, const unsigned int n);
 
 }; // namespace sablib
 

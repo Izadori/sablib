@@ -13,6 +13,7 @@
 
 #include <stdexcept>
 #include <vector>
+#include "sablib_export.h"
 
 #include "../misc/diff.h"
 
@@ -28,7 +29,7 @@ namespace sablib {
  * @return The smoothed data.
  * @throw std::invalid_argument One or more parameters wrong.
  */
-const std::vector<double> Whittaker(
+SABLIB_EXPORT const std::vector<double> Whittaker(
 	const std::vector<double> & y, const std::vector<double> & w,
 	const double lambda, const unsigned int s = 2
 );
@@ -41,7 +42,7 @@ const std::vector<double> Whittaker(
  * @param s The order of the difference (usually s = 1, 2, or 3).
  * @return The smoothed data.
  */
-const std::vector<double> Whittaker(
+SABLIB_EXPORT const std::vector<double> Whittaker(
 	const std::vector<double> & y, const double lambda, const unsigned int s = 2
 );
 

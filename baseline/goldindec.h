@@ -13,6 +13,7 @@
 #include <stdexcept>
 
 #include "result_type.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -31,7 +32,7 @@ namespace sablib {
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult
+SABLIB_EXPORT const BaselineResult
 BaselineGoldindec(
 	const std::vector<double> & y, const unsigned int polyorder, const double peak_ratio = 0.5,
 	const double alpha = 0.99 * 0.5, const unsigned int loop = 100, const double eps = 1.0e-4,

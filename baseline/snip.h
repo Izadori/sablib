@@ -8,12 +8,13 @@
  * @li Caccia, M.; Ebolese, A.; Matteo, M.; Santro, R.; Locatteli, M.; Pieracci, M.; Tintori, C. "Background removal procedure based on the SNIP algorithm for γ−ray spectroscopy with the CAEN Educational Kit" Educational Note ED3163; CAEN S.p.A.: Viareggio, Italy, 2021.
  */
 
+#ifndef __SABLIB_SNIP_H__
+#define __SABLIB_SNIP_H__
+
 #include <stdexcept>
 
 #include "result_type.h"
-
-#ifndef __SABLIB_SNIP_H__
-#define __SABLIB_SNIP_H__
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -41,7 +42,7 @@ enum class SnipPreprocess
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult
+SABLIB_EXPORT const BaselineResult
 BaselineSnip(
 	const std::vector<double> & y, const unsigned int m, const bool decreasing = true,
 	const SnipPreprocess preprocess = SnipPreprocess::None, const unsigned int loop = 1

@@ -10,6 +10,7 @@
 #include <stdexcept>
 
 #include "result_type.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -21,7 +22,7 @@ namespace sablib {
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult BaselineSpline(const std::vector<double> & y, const std::vector<unsigned int> & indices);
+SABLIB_EXPORT const BaselineResult BaselineSpline(const std::vector<double> & y, const std::vector<unsigned int> & indices);
 
 }; // namespace sablib
 

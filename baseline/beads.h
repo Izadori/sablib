@@ -9,12 +9,13 @@
  * @li [Kotaro Saito's pybeads implementation](https://github.com/skotaro/pybeads/)
  */
 
+#ifndef __SABLIB_BEADS_H__
+#define __SABLIB_BEADS_H__
+
 #include <stdexcept>
 
 #include "result_type.h"
-
-#ifndef __SABLIB_BEADS_H__
-#define __SABLIB_BEADS_H__
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -43,7 +44,7 @@ enum class BeadsPenalty
  * @return The estimated baseline and denoised baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult
+SABLIB_EXPORT const BaselineResult
 BaselineBeads(
 	const std::vector<double> & y, const unsigned int s, const double frequency, const double r,
 	const double lambda0, const double lambda1, const double lambda2, const unsigned int loop = 30,
@@ -58,7 +59,7 @@ BaselineBeads(
  * @return A expanded vector.
  * @exception std::invalid_argument The length of y is zero.
  */
-const std::vector<double>
+SABLIB_EXPORT const std::vector<double>
 BeadsExpandBoundaries(const std::vector<double> & y, const unsigned int n = 400);
 
 /**
@@ -69,7 +70,7 @@ BeadsExpandBoundaries(const std::vector<double> & y, const unsigned int n = 400)
  * @return A trimmed vector.
  * @exception std::invalid_argument The length of y is zero or less than `2 * n`.
  */
-const std::vector<double>
+SABLIB_EXPORT const std::vector<double>
 BeadsTrimBoundaries(const std::vector<double> & y, const unsigned int n = 400);
 
 }; // namespace sablib

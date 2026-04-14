@@ -13,6 +13,7 @@
 #include <stdexcept>
 
 #include "result_type.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -27,7 +28,7 @@ namespace sablib {
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult BaselineIModPoly(
+SABLIB_EXPORT const BaselineResult BaselineIModPoly(
 	const std::vector<double> & y, const unsigned int polyorder, const double k = 1,
 	const unsigned int loop = 50, const double eps = 1.0e-3
 );

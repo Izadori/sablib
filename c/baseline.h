@@ -58,7 +58,7 @@ enum Sablib_BeadsPenalty
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineLinear(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineLinear(
     const SABLIB_DATA_PTR y, const unsigned int index1, const unsigned int index2
 );
 
@@ -72,7 +72,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineLinear(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselinePolynomial(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselinePolynomial(
 	const SABLIB_DATA_PTR y, const unsigned int polyorder, const unsigned int * indices_ptr, const size_t ptr_size
 );
 
@@ -85,7 +85,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselinePolynomial(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSpline(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSpline(
     const SABLIB_DATA_PTR y, const unsigned int * indices_ptr, const size_t ptr_size
 );
 
@@ -98,7 +98,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSpline(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSMA(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSMA(
     const SABLIB_DATA_PTR y, const unsigned int n, const unsigned int loop
 );
 
@@ -113,7 +113,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSMA(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSnip(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSnip(
 	const SABLIB_DATA_PTR y, const unsigned int m, const bool decreasing,
 	const enum Sablib_SnipPreprocess preprocess, const unsigned int loop
 );
@@ -128,7 +128,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineSnip(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineModPoly(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineModPoly(
 	const SABLIB_DATA_PTR y, const unsigned int polyorder, const unsigned int loop, const double eps
 );
 
@@ -143,7 +143,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineModPoly(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineIModPoly(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineIModPoly(
 	const SABLIB_DATA_PTR y, const unsigned int polyorder, const double k,
 	const unsigned int loop, const double eps
 );
@@ -161,7 +161,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineIModPoly(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineBackcor(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineBackcor(
 	const SABLIB_DATA_PTR y, const unsigned int polyorder, const enum Sablib_BackcorFunc func,
 	const double s, const double alpha, const unsigned int loop, const double eps
 );
@@ -181,7 +181,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineBackcor(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineGoldindec(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineGoldindec(
 	const SABLIB_DATA_PTR y, const unsigned int polyorder, const double peak_ratio,
 	const double alpha, const unsigned int loop, const double eps,
 	const unsigned int loop_legend, const double eps_legend, const double eps_s
@@ -199,7 +199,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineGoldindec(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAsLS(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAsLS(
 	const SABLIB_DATA_PTR y, const double lambda, const double p, const unsigned int s,
 	const unsigned int loop, const double eps
 );
@@ -215,7 +215,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAsLS(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAirPLS(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAirPLS(
 	const SABLIB_DATA_PTR y, const double lambda, const unsigned int s,
 	const unsigned int loop, const double eps
 );
@@ -231,7 +231,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAirPLS(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineArPLS(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineArPLS(
 	const SABLIB_DATA_PTR y, const double lambda, const unsigned int s,
 	const unsigned int loop, const double eps
 );
@@ -249,7 +249,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineArPLS(
  * @return The estimated baseline and baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselinePsalsa(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselinePsalsa(
 	const SABLIB_DATA_PTR y, const double lambda, const double p, const double k,
 	const unsigned int s, const unsigned int loop, const double eps
 );
@@ -270,7 +270,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselinePsalsa(
  * @return The estimated baseline and denoised baseline-corrected data.
  * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
  */
-const SABLIB_BASELINE_DATA_PTR Sablib_BaselineBeads(
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineBeads(
 	const SABLIB_DATA_PTR y, const unsigned int s, const double frequency, const double r,
 	const double lambda0, const double lambda1, const double lambda2, const unsigned int loop,
 	const double eps, const enum Sablib_BeadsPenalty penalty
@@ -284,7 +284,7 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineBeads(
  * @return A expanded vector.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_BeadsExpandBoundaries(const SABLIB_DATA_PTR y, const unsigned int n);
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_BeadsExpandBoundaries(const SABLIB_DATA_PTR y, const unsigned int n);
 
 /**
  * @brief Trims the expanded signal boundaries.
@@ -294,7 +294,7 @@ const SABLIB_DATA_PTR Sablib_BeadsExpandBoundaries(const SABLIB_DATA_PTR y, cons
  * @return A trimmed vector.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_BeadsTrimBoundaries(const SABLIB_DATA_PTR y, const unsigned int n);
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_BeadsTrimBoundaries(const SABLIB_DATA_PTR y, const unsigned int n);
 
 #ifdef __cplusplus
 }

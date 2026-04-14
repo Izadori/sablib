@@ -12,6 +12,7 @@
 
 #include <stdexcept>
 #include <vector>
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -25,7 +26,7 @@ namespace sablib {
  * @return The calculated filter coefficients.
  * @throw std::invalid_argument One or more parameters are wrong.
  */
-const std::vector<double> SavitzkyGolayCoefficients(
+SABLIB_EXPORT const std::vector<double> SavitzkyGolayCoefficients(
 	const unsigned int n, const unsigned int polyorder, const unsigned derive = 0, const double delta = 1
 );
 
@@ -40,7 +41,7 @@ const std::vector<double> SavitzkyGolayCoefficients(
  * @return The filtered (smoothed or differentiated) data.
  * @throw std::invalid_argument If the length of y is zero.
  */
-const std::vector<double> SavitzkyGolay(
+SABLIB_EXPORT const std::vector<double> SavitzkyGolay(
 	const std::vector<double> & y,
 	const unsigned int n, const unsigned int polyorder, const unsigned derive = 0, const double delta = 1
 );

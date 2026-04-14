@@ -13,6 +13,8 @@
 #include <stdexcept>
 #include <vector>
 
+#include "sablib_export.h"
+
 namespace sablib {
 
 /**
@@ -29,7 +31,7 @@ namespace sablib {
  * @return A vector containing the smoothed data points.
  * @throw std::invalid_argument One or more parameters are wrong.
  */
-const std::vector<double> PSpline(
+SABLIB_EXPORT const std::vector<double> PSpline(
 	const std::vector<double> & y, const unsigned int knots_num,
 	const unsigned int degree = 3, const unsigned int s = 2, const double lambda = 1.0
 );

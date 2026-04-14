@@ -10,6 +10,7 @@
 #include <stdexcept>
 
 #include "result_type.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -22,7 +23,7 @@ namespace sablib {
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult BaselineLinear(const std::vector<double> & y, const unsigned int index1, const unsigned int index2);
+SABLIB_EXPORT const BaselineResult BaselineLinear(const std::vector<double> & y, const unsigned int index1, const unsigned int index2);
 
 /**
  * @brief Performs baseline estimation by fitting a polynomial to specified points.
@@ -33,7 +34,7 @@ const BaselineResult BaselineLinear(const std::vector<double> & y, const unsigne
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult BaselinePolynomial(
+SABLIB_EXPORT const BaselineResult BaselinePolynomial(
 	const std::vector<double> & y, const unsigned int polyorder, const std::vector<unsigned int> & indices
 );
 

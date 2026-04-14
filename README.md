@@ -82,16 +82,34 @@ target_link_libraries(my_app PRIVATE sablib::sablib)
 
 ### Building manually
 
-`sablib` can also be built as a static library using CMake directly:
+`sablib` can be built as a static or shared library using CMake directly:
 
 ```bash
 mkdir build
 cd build
+# For static library (default)
 cmake ..
-cmake --build .
+# For shared library (.dll on Windows, .so on Linux, .dylib on macOS)
+cmake .. -DBUILD_SHARED_LIBS=ON
+# Build the library
+cmake --build . --config Release
 ```
 
 If Eigen3 is not found, please try `cmake .. -DCMAKE_PREFIX_PATH="path/to/Eigen3"`.
+
+### Installation
+
+To install `sablib` to your system (or a specific directory), use the following commands:
+
+```bash
+# Specify the installation directory (optional)
+cmake .. -DCMAKE_INSTALL_PREFIX="/path/to/install"
+# Install the library and headers
+cmake --install . --config Release
+```
+
+After installation, the headers will be located in `${CMAKE_INSTALL_PREFIX}/include/sablib` and the library in `${CMAKE_INSTALL_PREFIX}/lib`.
+On Windows, the DLL will be in `${CMAKE_INSTALL_PREFIX}/bin`.
 
 ## Usage
 
@@ -135,13 +153,6 @@ Include the main header to access all library features:
 
 ```cpp
 #include "sablib/sablib.h"
-```
-
-Alternatively, you can include specific algorithm headers to minimize dependencies:
-
-```cpp
-#include "sablib/smoothing/pspline.h"
-#include "sablib/baseline/arpls.h"
 ```
 
 ## Documentation

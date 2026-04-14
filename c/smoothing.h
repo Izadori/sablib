@@ -21,7 +21,7 @@ extern "C" {
  * @return The data after applying the moving average.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_MovingAverage(const SABLIB_DATA_PTR y, const unsigned int n);
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_MovingAverage(const SABLIB_DATA_PTR y, const unsigned int n);
 
 /**
  * @brief Calculates the weighted moving average of the input signal.
@@ -31,7 +31,7 @@ const SABLIB_DATA_PTR Sablib_MovingAverage(const SABLIB_DATA_PTR y, const unsign
  * @return The data after applying the moving average.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_WeightedMovingAverage(const SABLIB_DATA_PTR y, const SABLIB_DATA_PTR w);
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_WeightedMovingAverage(const SABLIB_DATA_PTR y, const SABLIB_DATA_PTR w);
 
 /**
  * @brief Performs moving median smoothing.
@@ -41,7 +41,7 @@ const SABLIB_DATA_PTR Sablib_WeightedMovingAverage(const SABLIB_DATA_PTR y, cons
  * @return The data after applying the moving median.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_MovingMedian(const SABLIB_DATA_PTR y, const unsigned int n);
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_MovingMedian(const SABLIB_DATA_PTR y, const unsigned int n);
 
 /**
  * @brief Smoothes the input data using P-Splines (Penalized B-Splines).
@@ -57,7 +57,7 @@ const SABLIB_DATA_PTR Sablib_MovingMedian(const SABLIB_DATA_PTR y, const unsigne
  * @return A vector containing the smoothed data points.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_PSpline(
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_PSpline(
 	const SABLIB_DATA_PTR y, const unsigned int knots_num,
 	const unsigned int degree, const unsigned int s, const double lambda
 );
@@ -72,7 +72,7 @@ const SABLIB_DATA_PTR Sablib_PSpline(
  * @return The calculated filter coefficients.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_SavitzkyGolayCoefficients(
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_SavitzkyGolayCoefficients(
 	const unsigned int n, const unsigned int polyorder, const unsigned derive, const double delta
 );
 
@@ -87,7 +87,7 @@ const SABLIB_DATA_PTR Sablib_SavitzkyGolayCoefficients(
  * @return The filtered (smoothed or differentiated) data.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_SavitzkyGolay(
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_SavitzkyGolay(
 	const SABLIB_DATA_PTR y,
 	const unsigned int n, const unsigned int polyorder, const unsigned derive, const double delta
 );
@@ -102,7 +102,7 @@ const SABLIB_DATA_PTR Sablib_SavitzkyGolay(
  * @return The smoothed data.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_WeightedWhittaker(
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_WeightedWhittaker(
 	const SABLIB_DATA_PTR y, const SABLIB_DATA_PTR w,
 	const double lambda, const unsigned int s
 );
@@ -116,7 +116,7 @@ const SABLIB_DATA_PTR Sablib_WeightedWhittaker(
  * @return The smoothed data.
  * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
  */
-const SABLIB_DATA_PTR Sablib_Whittaker(
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_Whittaker(
 	const SABLIB_DATA_PTR y, const double lambda, const unsigned int s
 );
 

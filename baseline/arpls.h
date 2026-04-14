@@ -13,6 +13,7 @@
 #include <stdexcept>
 
 #include "result_type.h"
+#include "sablib_export.h"
 
 namespace sablib {
 
@@ -27,7 +28,7 @@ namespace sablib {
  * @return The estimated baseline and baseline-corrected data.
  * @exception std::invalid_argument One or more parameters are wrong.
  */
-const BaselineResult BaselineArPLS(
+SABLIB_EXPORT const BaselineResult BaselineArPLS(
 	const std::vector<double> & y, const double lambda, const unsigned int s = 2,
 	const unsigned int loop = 50, const double eps = 1e-3
 );

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(sablib VERSION 0.3.2 LANGUAGES CXX)
+project(sablib VERSION 0.4.0 LANGUAGES CXX)
 
 # C++ Standard
 set(CMAKE_CXX_STANDARD 17)
@@ -29,6 +29,9 @@ set(SABLIB_SOURCES
     smoothing/pspline.cpp
     smoothing/savitzky_golay.cpp
     smoothing/whittaker.cpp
+    c/data.cpp
+    c/baseline.cpp
+    c/smoothing.cpp
 )
 
 # Header files
@@ -58,14 +61,27 @@ set(SABLIB_HEADERS
     smoothing/pspline.h
     smoothing/savitzky_golay.h
     smoothing/whittaker.h
+    c/data.h
+    c/baseline.h
+    c/smoothing.h
 )
 
 # Define the library
-add_library(sablib STATIC ${SABLIB_SOURCES} ${SABLIB_HEADERS})
+# Use a variable to decide between STATIC and SHARED (default to STATIC)
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+add_library(sablib ${SABLIB_SOURCES} ${SABLIB_HEADERS})
+
+# Generate export header for shared library support
+include(GenerateExportHeader)
+generate_export_header(sablib
+    BASE_NAME SABLIB
+    EXPORT_FILE_NAME "${CMAKE_CURRENT_BINARY_DIR}/sablib_export.h"
+)
 
 # Public include directories
 target_include_directories(sablib PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     $<INSTALL_INTERFACE:include/sablib>
 )
 
@@ -83,12 +99,21 @@ install(TARGETS sablib
 )
 
 # Install headers (preserving folder structure)
-install(DIRECTORY baseline smoothing misc
+install(DIRECTORY
+    baseline
+    smoothing
+    misc
+    c
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sablib
 )
 
 # Install main header
-install(FILES sablib.h DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/sablib")
+install(FILES
+    sablib.h
+    csablib.h
+    "${CMAKE_CURRENT_BINARY_DIR}/sablib_export.h"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/sablib"
+)
 
 # Export targets for find_package
 install(EXPORT sablibTargets
