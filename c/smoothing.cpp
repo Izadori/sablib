@@ -49,6 +49,35 @@ const SABLIB_DATA_PTR Sablib_WeightedMovingAverage(const SABLIB_DATA_PTR y, cons
 }
 
 //
+// Implementation of Sablib_GaussianKernel() function.
+//
+const SABLIB_DATA_PTR Sablib_GaussianKernel(const unsigned int n, const double sigma)
+{
+    auto result = sablib::GaussianKernel(n, sigma);
+
+    SABLIB_DATA_PTR p = AllocSablibData(result.size());
+    std::copy(result.begin(), result.end(), p->data);
+
+    return p;
+}
+
+//
+// Implementation of Sablib_GaussianFilter() function.
+//
+const SABLIB_DATA_PTR Sablib_GaussianFilter(const SABLIB_DATA_PTR y, const unsigned int n, const double sigma)
+{
+    std::vector<double> yy;
+    yy.assign(y->data, y->data + y->size);
+
+    auto result = sablib::GaussianFilter(yy, n, sigma);
+
+    SABLIB_DATA_PTR p = AllocSablibData(result.size());
+    std::copy(result.begin(), result.end(), p->data);
+
+    return p;
+}
+
+//
 // Implementation of Sablib_MovingMedian() function.
 //
 const SABLIB_DATA_PTR Sablib_MovingMedian(const SABLIB_DATA_PTR y, const unsigned int n)

@@ -34,6 +34,30 @@ SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_MovingAverage(const SABLIB_DATA_PTR y
 SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_WeightedMovingAverage(const SABLIB_DATA_PTR y, const SABLIB_DATA_PTR w);
 
 /**
+ * @brief Generates a Gaussian kernel.
+ *
+ * @param n Half-width of the Gaussian window (total size is `2 * n + 1`).
+ * @param sigma The standard deviation of the Gaussian distribution.
+ * @return A vector containing the Gaussian kernel coefficients.
+ * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
+ */
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_GaussianKernel(const unsigned int n, const double sigma);
+
+/**
+ * @brief Performs Gaussian smoothing on the input signal.
+ *
+ * This is a convenience function that generates a Gaussian kernel and then
+ * applies it using `Sablib_WeightedMovingAverage`.
+ *
+ * @param y The data to be smoothed.
+ * @param n Half-width of the Gaussian window (total size is `2 * n + 1`).
+ * @param sigma The standard deviation of the Gaussian distribution.
+ * @return The data after applying the Gaussian filter.
+ * @note The returned pointer must be freed with FreeSablibData() to avoid memory leaks.
+ */
+SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_GaussianFilter(const SABLIB_DATA_PTR y, const unsigned int n, const double sigma);
+
+/**
  * @brief Performs moving median smoothing.
  *
  * @param y The input data vector (signal to be smoothed).
