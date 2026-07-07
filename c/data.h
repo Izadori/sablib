@@ -7,6 +7,12 @@
 #ifndef __SABLIB_C_DATA_H__
 #define __SABLIB_C_DATA_H__
 
+#ifdef __cplusplus
+#include <cstddef>  // for size_t
+#else
+#include <stddef.h> // for size_t
+#endif // __cplusplus
+
 /**
  * @brief Definition of sablib data structure.
  */

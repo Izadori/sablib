@@ -1,6 +1,6 @@
 {
   "name": "sablib",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Signal smoothing and baseline estimation library for C++.",
   "homepage": "https://github.com/Izadori/sablib",
   "license": "MIT",
