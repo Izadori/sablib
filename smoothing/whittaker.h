@@ -70,7 +70,7 @@ Whittaker(
 
 	Eigen::VectorXd z;
 	Eigen::SparseMatrix<typename Derived::PlainObject::Scalar> W;
-	Eigen::SimplicialCholesky< Eigen::SparseMatrix<Scalar> > solver;
+	Eigen::SparseLU< Eigen::SparseMatrix<double> > solver;
 
 	W = w.asDiagonal();
 	solver.compute(W + lambdaDTD);
