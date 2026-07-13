@@ -237,6 +237,23 @@ SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineArPLS(
 );
 
 /**
+ * @brief Performs baseline estimation using adaptive smoothness Penalized Least Squares(asPLS).
+ *
+ * @param y The input data for baseline estimation.
+ * @param lambda Smoothing parameter.
+ * @param k Asymmetric coefficient.
+ * @param s The order of the difference (usually s = 1, 2, or 3).
+ * @param loop Maximum number of iterations.
+ * @param eps Convergence threshold.
+ * @return The estimated baseline and baseline-corrected data.
+ * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
+ */
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAsPLS(
+	const SABLIB_DATA_PTR y, const double lambda, const double k,
+	const unsigned int s, const unsigned int loop, const double eps
+);
+
+/**
  * @brief Performs baseline estimation using Peaked Signal’s Asymmetric Least Squares Algorithm (psalsa).
  *
  * @param y The input data for baseline estimation.

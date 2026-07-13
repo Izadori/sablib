@@ -24,6 +24,7 @@
 #include "baseline/asls.h"
 #include "baseline/airpls.h"
 #include "baseline/arpls.h"
+#include "baseline/aspls.h"
 #include "baseline/psalsa.h"
 #include "baseline/beads.h"
 

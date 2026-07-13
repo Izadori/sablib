@@ -9,6 +9,7 @@
 #include "../baseline/airpls.h"
 #include "../baseline/arpls.h"
 #include "../baseline/asls.h"
+#include "../baseline/aspls.h"
 #include "../baseline/backcor.h"
 #include "../baseline/beads.h"
 #include "../baseline/goldindec.h"
@@ -291,6 +292,26 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineArPLS(
     yy.assign(y->data, y->data + y->size);
 
     auto result = sablib::BaselineArPLS(yy, lambda, s, loop, eps);
+
+    SABLIB_BASELINE_DATA_PTR p = AllocSablibBaselineData(result.baseline.size());
+    std::copy(result.baseline.begin(), result.baseline.end(), p->baseline.data);
+    std::copy(result.corrected.begin(), result.corrected.end(), p->corrected.data);
+
+    return p;
+}
+
+//
+// Implementation of Sablib_BaselineAsPLS() function.
+//
+const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAsPLS(
+	const SABLIB_DATA_PTR y, const double lambda, const double k,
+    const unsigned int s, const unsigned int loop, const double eps
+)
+{
+    std::vector<double> yy;
+    yy.assign(y->data, y->data + y->size);
+
+    auto result = sablib::BaselineAsPLS(yy, lambda, k, s, loop, eps);
 
     SABLIB_BASELINE_DATA_PTR p = AllocSablibBaselineData(result.baseline.size());
     std::copy(result.baseline.begin(), result.baseline.end(), p->baseline.data);
