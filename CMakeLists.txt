@@ -12,6 +12,7 @@ find_package(Eigen3 CONFIG REQUIRED)
 # Source files
 set(SABLIB_SOURCES
     baseline/airpls.cpp
+    baseline/aispls.cpp
     baseline/arpls.cpp
     baseline/aspls.cpp
     baseline/asls.cpp
@@ -39,6 +40,7 @@ set(SABLIB_SOURCES
 # Header files
 set(SABLIB_HEADERS
     baseline/airpls.h
+    baseline/aispls.h
     baseline/arpls.h
     baseline/aspls.h
     baseline/asls.h
