@@ -30,7 +30,7 @@ namespace sablib {
  * @exception std::invalid_argument One or more parameters are wrong.
  */
 SABLIB_EXPORT const BaselineResult BaselineAsPLS(
-	const std::vector<double> & y, const double lambda, const unsigned int k = 0.5,
+	const std::vector<double> & y, const double lambda, const double k = 0.5,
 	const unsigned int s = 2, const unsigned int loop = 50, const double eps = 1e-3
 );
 

@@ -18,7 +18,7 @@ namespace sablib {
 // Implementation of BaselineAsPLS() function
 //
 const BaselineResult BaselineAsPLS(
-	const std::vector<double> & y, const double lambda, const unsigned int k,
+	const std::vector<double> & y, const double lambda, const double k,
 	const unsigned int s, const unsigned int loop, const double eps
 )
 {
