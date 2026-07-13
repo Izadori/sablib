@@ -13,6 +13,7 @@ find_package(Eigen3 CONFIG REQUIRED)
 set(SABLIB_SOURCES
     baseline/airpls.cpp
     baseline/arpls.cpp
+    baseline/aspls.cpp
     baseline/asls.cpp
     baseline/backcor.cpp
     baseline/beads.cpp
@@ -24,6 +25,7 @@ set(SABLIB_SOURCES
     baseline/sma.cpp
     baseline/snip.cpp
     baseline/spline.cpp
+    misc/functions.cpp
     smoothing/moving_average.cpp
     smoothing/moving_median.cpp
     smoothing/pspline.cpp
@@ -38,6 +40,7 @@ set(SABLIB_SOURCES
 set(SABLIB_HEADERS
     baseline/airpls.h
     baseline/arpls.h
+    baseline/aspls.h
     baseline/asls.h
     baseline/backcor.h
     baseline/beads.h
@@ -54,6 +57,7 @@ set(SABLIB_HEADERS
     misc/cubic_spline.h
     misc/diff.h
     misc/expand.h
+    misc/functions.h
     misc/polyfit.h
     misc/spdiags.h
     smoothing/moving_average.h

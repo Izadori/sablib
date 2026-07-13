@@ -5,7 +5,9 @@
  */
 
 #include <cmath>
+#include <functional>
 
+#include "../misc/functions.h"
 #include "../smoothing/whittaker.h"
 
 #include "arpls.h"
@@ -46,16 +48,6 @@ const BaselineResult BaselineArPLS(
 	double mean, sd;
 	Eigen::Index ct;
 
-	auto logistic = [](const double xx) {
-		if(xx < 0) {
-			double t = std::exp(xx);
-			return t / (t + 1);
-		}
-		else {
-			return 1 / (1 + std::exp(-xx));
-		}
-	};
-
 	yy = Eigen::VectorXd::Map(y.data(), m);
 
 	w.setOnes(m);
@@ -74,7 +66,7 @@ const BaselineResult BaselineArPLS(
 		mean = (d.array() < 0).select(d, 0).sum() / ct;
 		sd = std::sqrt((d.array() < 0).select((d.array() - mean).matrix(), 0).squaredNorm() / (ct - 1));
 
-		tmp = (-2 * (d.array() + mean - 2 * sd) / sd).matrix().unaryExpr(logistic);
+		tmp = (-2 * (d.array() + mean - 2 * sd) / sd).matrix().unaryExpr(std::ref(logistic));
 		wt = (d.array() >= 0).select(tmp, 1);
 
 		if ((w - wt).norm() / w.norm() < eps) {
