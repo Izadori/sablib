@@ -1,0 +1,40 @@
+/**
+ * @file asls.h
+ * @brief Baseline estimation using Improved Asymmetric Least Squares Smoothing(IAsLS)
+ * @author Izadori
+ * @details
+ * References:
+ * @li He, S., et al. "Baseline correction for Raman spectra using an improved asymmetric least squares method" Analytical Methods, 2014, 6(12), 4402–4407.
+ */
+
+#ifndef __SABLIB_IASLS_H__
+#define __SABLIB_IASLS_H__
+
+#include <stdexcept>
+
+#include "result_type.h"
+#include "sablib_export.h"
+
+namespace sablib {
+
+/**
+ * @brief Performs baseline estimation using Improved Asymmetric Least Squares Smoothing (IAsLS).
+ *
+ * @param y The input data for baseline estimation.
+ * @param lambda Smoothing parameter.
+ * @param lambda1 Smoothing parameter for the first derivative.
+ * @param p Weight (asymmetry parameter, typically 0.001 to 0.1).
+ * @param s The order of the difference (usually s = 2 or 3).
+ * @param loop Maximum number of iterations.
+ * @param eps Convergence threshold.
+ * @return The estimated baseline and baseline-corrected data.
+ * @exception std::invalid_argument One or more parameters are wrong.
+ */
+SABLIB_EXPORT const BaselineResult BaselineIAsLS(
+	const std::vector<double> & y, const double lambda, const double lambda1, const double p,
+	const unsigned int s = 2, const unsigned int loop = 10, const double eps = 1e-3
+);
+
+}; // namespace sablib
+
+#endif // __SABLIB_IASLS_H__

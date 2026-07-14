@@ -14,11 +14,12 @@ set(SABLIB_SOURCES
     baseline/airpls.cpp
     baseline/aispls.cpp
     baseline/arpls.cpp
-    baseline/aspls.cpp
     baseline/asls.cpp
+    baseline/aspls.cpp
     baseline/backcor.cpp
     baseline/beads.cpp
     baseline/goldindec.cpp
+    baseline/iasls.cpp
     baseline/imodpoly.cpp
     baseline/modpoly.cpp
     baseline/polynomial.cpp
@@ -42,11 +43,12 @@ set(SABLIB_HEADERS
     baseline/airpls.h
     baseline/aispls.h
     baseline/arpls.h
-    baseline/aspls.h
     baseline/asls.h
+    baseline/aspls.h
     baseline/backcor.h
     baseline/beads.h
     baseline/goldindec.h
+    baseline/iasls.h
     baseline/imodpoly.h
     baseline/modpoly.h
     baseline/polynomial.h

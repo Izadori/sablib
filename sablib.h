@@ -22,6 +22,7 @@
 #include "baseline/backcor.h"
 #include "baseline/goldindec.h"
 #include "baseline/asls.h"
+#include "baseline/iasls.h"
 #include "baseline/airpls.h"
 #include "baseline/aispls.h"
 #include "baseline/arpls.h"

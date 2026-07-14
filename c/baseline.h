@@ -205,6 +205,24 @@ SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAsLS(
 );
 
 /**
+ * @brief Performs baseline estimation using Improved Asymmetric Least Squares Smoothing (IAsLS).
+ *
+ * @param y The input data for baseline estimation.
+ * @param lambda Smoothing parameter.
+ * @param lambda1 Smoothing parameter for the first derivative.
+ * @param p Weight (asymmetry parameter, typically 0.001 to 0.1).
+ * @param s The order of the difference (usually s = 2 or 3).
+ * @param loop Maximum number of iterations.
+ * @param eps Convergence threshold.
+ * @return The estimated baseline and baseline-corrected data.
+ * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
+ */
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineIAsLS(
+	const SABLIB_DATA_PTR y, const double lambda, const double lambda1, const double p,
+	const unsigned int s, const unsigned int loop, const double eps
+);
+
+/**
  * @brief Performs baseline estimation using adaptive iteratively reweighted Penalized Least Squares(airPLS).
  *
  * @param y The input data for baseline estimation.

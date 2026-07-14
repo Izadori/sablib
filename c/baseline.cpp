@@ -14,6 +14,7 @@
 #include "../baseline/backcor.h"
 #include "../baseline/beads.h"
 #include "../baseline/goldindec.h"
+#include "../baseline/iasls.h"
 #include "../baseline/imodpoly.h"
 #include "../baseline/modpoly.h"
 #include "../baseline/polynomial.h"
@@ -253,6 +254,26 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineAsLS(
 	yy.assign(y->data, y->data + y->size);
 
 	auto result = sablib::BaselineAsLS(yy, lambda, p, s, loop, eps);
+
+	SABLIB_BASELINE_DATA_PTR ptr = AllocSablibBaselineData(result.baseline.size());
+	std::copy(result.baseline.begin(), result.baseline.end(), ptr->baseline.data);
+	std::copy(result.corrected.begin(), result.corrected.end(), ptr->corrected.data);
+
+	return ptr;
+}
+
+//
+// Implementation of Sablib_BaselineIAsLS() function.
+//
+const SABLIB_BASELINE_DATA_PTR Sablib_BaselineIAsLS(
+	const SABLIB_DATA_PTR y, const double lambda, const double lambda1, const double p,
+	const unsigned int s, const unsigned int loop, const double eps
+)
+{
+	std::vector<double> yy;
+	yy.assign(y->data, y->data + y->size);
+
+	auto result = sablib::BaselineIAsLS(yy, lambda, lambda1, p, s, loop, eps);
 
 	SABLIB_BASELINE_DATA_PTR ptr = AllocSablibBaselineData(result.baseline.size());
 	std::copy(result.baseline.begin(), result.baseline.end(), ptr->baseline.data);
