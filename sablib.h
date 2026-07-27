@@ -30,5 +30,6 @@
 #include "baseline/psalsa.h"
 #include "baseline/beads.h"
 #include "baseline/rubberband.h"
+#include "baseline/kajfoszkwiatek.h"
 
 #endif // __SABLIB_H__

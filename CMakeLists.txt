@@ -21,6 +21,7 @@ set(SABLIB_SOURCES
     baseline/goldindec.cpp
     baseline/iasls.cpp
     baseline/imodpoly.cpp
+    baseline/kajfoszkwiatek.cpp
     baseline/modpoly.cpp
     baseline/polynomial.cpp
     baseline/psalsa.cpp

@@ -357,6 +357,18 @@ SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_BeadsTrimBoundaries(const SABLIB_DATA
  */
 SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineRubberBand(const SABLIB_DATA_PTR y);
 
+/**
+ * @brief Performs background estimation using the Kajfosz-Kwiatek method. (parabolic approximation)
+ *
+ * Using the Felzenszwalb-Huttenlocher's lower envelope algorithm.
+ *
+ * @param y The input data for baseline estimation.
+ * @param width The width of parabola.
+ * @return The estimated baseline and baseline-corrected data.
+ * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
+ */
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineKajfoszKwiatek(const SABLIB_DATA_PTR y, const double width);
+
 #ifdef __cplusplus
 }
 #endif // __cplusplus

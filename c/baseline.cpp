@@ -447,3 +447,20 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineRubberBand(const SABLIB_DATA_PTR y
 
 	return ptr;
 }
+
+//
+// Implementation of Sablib_BaselineKajfoszKwiatek() function.
+//
+const SABLIB_BASELINE_DATA_PTR Sablib_BaselineKajfoszKwiatek(const SABLIB_DATA_PTR y, const double width)
+{
+	std::vector<double> yy;
+	yy.assign(y->data, y->data + y->size);
+
+	auto result = sablib::BaselineKajfoszKwiatek(yy, width);
+
+	SABLIB_BASELINE_DATA_PTR ptr = AllocSablibBaselineData(result.baseline.size());
+	std::copy(result.baseline.begin(), result.baseline.end(), ptr->baseline.data);
+	std::copy(result.corrected.begin(), result.corrected.end(), ptr->corrected.data);
+
+	return ptr;
+}
