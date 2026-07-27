@@ -348,6 +348,15 @@ SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_BeadsExpandBoundaries(const SABLIB_DA
  */
 SABLIB_EXPORT const SABLIB_DATA_PTR Sablib_BeadsTrimBoundaries(const SABLIB_DATA_PTR y, const unsigned int n);
 
+/**
+ * @brief Performs background estimation using the Rubber Band method.
+ *
+ * @param y The input data for baseline estimation.
+ * @return The estimated baseline and baseline-corrected data.
+ * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
+ */
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineRubberBand(const SABLIB_DATA_PTR y);
+
 #ifdef __cplusplus
 }
 #endif // __cplusplus

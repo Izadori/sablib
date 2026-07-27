@@ -29,5 +29,6 @@
 #include "baseline/aspls.h"
 #include "baseline/psalsa.h"
 #include "baseline/beads.h"
+#include "baseline/rubberband.h"
 
 #endif // __SABLIB_H__

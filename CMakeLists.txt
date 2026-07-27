@@ -24,6 +24,7 @@ set(SABLIB_SOURCES
     baseline/modpoly.cpp
     baseline/polynomial.cpp
     baseline/psalsa.cpp
+    baseline/rubberband.cpp
     baseline/sma.cpp
     baseline/snip.cpp
     baseline/spline.cpp
