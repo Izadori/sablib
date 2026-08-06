@@ -15,10 +15,16 @@ A C++ library for signal smoothing and baseline estimation, powered by Eigen.
 - **Backcor**: Iterative polynomial fitting with a non-quadratic cost function.
 - **Goldindec**: Goldindec algorithm (a variation of Backcor).
 - **AsLS**: Asymmetric Least Squares.
+- **IAsLS**: Improved AsLS.
 - **airPLS**: Adaptive Iteratively Reweighted Penalized Least Squares.
+- **aisPLS**: Adaptive Iterative Smoothing Parameter Penalized Least Squares.
 - **arPLS**: Asymmetrically Reweighted Penalized Least Squares.
+- **asPLS**: Adaptive Smoothness Penalized Least Squares.
 - **psalsa**: Peaked Signal's Asymmetric Least Squares Algorithm.
 - **BEADS**: Baseline Estimation And Denoising using Sparsity.
+- **Rubberband**: Rubberband method.
+- **Kajfosz-Kwiatek**: Kajfosz-Kwiatek method.
+- **Corner-Cutting**: Corner-Cutting method.
 
 ### Smoothing
 
