@@ -6,7 +6,6 @@
 
 #include <cmath>
 #include <functional>
-#include <iostream>
 
 #include "../misc/polyfit.h"
 
@@ -113,7 +112,6 @@ BaselineGoldindec(
 		}
 
 		s = a + 0.618 * (b - a);
-		// std::cerr << "up_down_ratio = " << up_down_ratio << ", s = " << s << std::endl;
 
 		// Based on experimentation, it seems better to set a threshold for s as well.
 		if(std::fabs(s - s_old) < eps_s) {
