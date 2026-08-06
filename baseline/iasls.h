@@ -1,5 +1,5 @@
 /**
- * @file asls.h
+ * @file iasls.h
  * @brief Baseline estimation using Improved Asymmetric Least Squares Smoothing(IAsLS)
  * @author Izadori
  * @details
