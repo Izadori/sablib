@@ -369,6 +369,16 @@ SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineRubberBand(const SAB
  */
 SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineKajfoszKwiatek(const SABLIB_DATA_PTR y, const double width);
 
+/**
+ * @brief Performs baseline estimation using Corner-Cutting method.
+ *
+ * @param y The input data for baseline estimation.
+ * @param loop Maximum number of iterations.
+ * @return The estimated baseline and baseline-corrected data.
+ * @note The returned pointer must be freed with FreeSablibBaselineData() to avoid memory leaks.
+ */
+SABLIB_EXPORT const SABLIB_BASELINE_DATA_PTR Sablib_BaselineCornerCutting(const SABLIB_DATA_PTR y, const unsigned int loop);
+
 #ifdef __cplusplus
 }
 #endif // __cplusplus

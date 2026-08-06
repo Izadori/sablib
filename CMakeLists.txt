@@ -18,6 +18,7 @@ set(SABLIB_SOURCES
     baseline/aspls.cpp
     baseline/backcor.cpp
     baseline/beads.cpp
+    baseline/cornercutting.cpp
     baseline/goldindec.cpp
     baseline/iasls.cpp
     baseline/imodpoly.cpp

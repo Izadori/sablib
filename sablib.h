@@ -31,5 +31,6 @@
 #include "baseline/beads.h"
 #include "baseline/rubberband.h"
 #include "baseline/kajfoszkwiatek.h"
+#include "baseline/cornercutting.h"
 
 #endif // __SABLIB_H__

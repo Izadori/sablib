@@ -464,3 +464,20 @@ const SABLIB_BASELINE_DATA_PTR Sablib_BaselineKajfoszKwiatek(const SABLIB_DATA_P
 
 	return ptr;
 }
+
+//
+// Implementation of Sablib_BaselineCornerCutting() function.
+//
+const SABLIB_BASELINE_DATA_PTR Sablib_BaselineCornerCutting(const SABLIB_DATA_PTR y, const unsigned int loop)
+{
+	std::vector<double> yy;
+	yy.assign(y->data, y->data + y->size);
+
+	auto result = sablib::BaselineCornerCutting(yy, loop);
+
+	SABLIB_BASELINE_DATA_PTR ptr = AllocSablibBaselineData(result.baseline.size());
+	std::copy(result.baseline.begin(), result.baseline.end(), ptr->baseline.data);
+	std::copy(result.corrected.begin(), result.corrected.end(), ptr->corrected.data);
+
+	return ptr;
+}
